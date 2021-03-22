@@ -51,6 +51,26 @@
             <div class="pill"></div>
         </div>
     </section>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nova OS</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni eos odio at tenetur incidunt illum! Sunt dicta natus cupiditate voluptatum, minima ut vero ratione in odio dolorem nostrum. Veritatis, maxime! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, dolore asperiores eaque quisquam odit sed molestias deserunt illum quae itaque consectetur velit vel impedit ut maxime, et, dignissimos nemo saepe? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore aspernatur iure minima natus esse deserunt, rem cupiditate veritatis minus quam, incidunt fugiat id vitae autem hic! Eligendi eius ratione soluta? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos vel ex nesciunt reprehenderit illum! Omnis, molestias ipsa ullam sed non nam. Temporibus sint fugiat nobis blanditiis error minus vero animi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quod perferendis sed corrupti velit perspiciatis? Aliquid atque maiores reprehenderit beatae ea porro perferendis earum mollitia? Laboriosam necessitatibus veritatis sit hic. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem officia tenetur voluptatem fugit delectus quae ab nesciunt nam quis molestias id, nemo incidunt sequi. Laudantium reiciendis mollitia velit esse praesentium.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn salvar">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
    
 
 
@@ -66,7 +86,7 @@
         <div class="container-fluid">
             <a class="nav-link" href="#"><i data-feather="bar-chart-2"></i></a>
             <a class="nav-link" href="#"><i data-feather="list"></i></a>
-            <a class="nav-link" href="#"><i data-feather="plus-square"></i></a>
+            <a class="nav-link" id="myInput" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#"><i data-feather="plus-square"></i></a>
             <a class="nav-link" href="#"><i data-feather="users"></i></a>
             <a class="nav-link" href="#"><i data-feather="credit-card"></i></a>
         </div>
@@ -77,6 +97,13 @@
         $(window).on('load', function() {
             $('#loading-screen').remove();            
         });
+
+        var myModal = document.getElementById('exampleModal');
+        var myInput = document.getElementById('myInput');
+
+        myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+        })
     </script>
 </body>
 </html>

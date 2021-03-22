@@ -63,6 +63,8 @@ body #list .pill {
   border-radius: 2em;
   margin: 0.5em 0;
   padding: 0 1em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 body #list .pill .pill-header {
@@ -85,6 +87,29 @@ body #list .pill .pill-header .pill-time {
   float: right;
   margin: 0 0.5em;
   display: block;
+}
+
+body .modal .modal-footer button {
+  width: 49%;
+}
+
+body .modal .modal-footer .salvar {
+  background-color: #263C88;
+  color: #f7f7f7;
+  margin: 0 0 0 auto;
+}
+
+body .modal .modal-footer .cancelar {
+  background-color: transparent;
+  color: #263C88;
+  border: 1px solid #263C88;
+  margin: 0 auto 0 0;
+}
+
+body .modal .modal-footer .cancelar:hover {
+  background-color: #263C88;
+  color: #f7f7f7;
+  border-color: #f7f7f7;
 }
 
 #loading-screen {

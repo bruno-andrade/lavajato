@@ -3,6 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
+@mixin shadow1 {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+@mixin shadow2 {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
 /*
 font-family: 'Roboto', sans-serif;
 font-family: 'Source Sans Pro', sans-serif;
@@ -26,8 +32,7 @@ body{
         background-color: $offwhite;
         border-radius: 1.4em;
         margin: 0.5em;
-        //box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        @include shadow1;
         
         a{
             width: 20%;
@@ -60,6 +65,7 @@ body{
             border-radius: 2em;
             margin: 0.5em 0;
             padding: 0 1em;
+            @include shadow2;
             .pill-header{
                 position: relative;
                 font-weight: 700;
@@ -79,11 +85,33 @@ body{
                     display: block;
                 }
             }
-            .pill-content{
-                
-            }
         }
     }
+    .modal{
+        .modal-footer{
+            button{
+                width: 49%;
+            }
+            .salvar{
+                background-color: $blue;
+                color: $offwhite;
+                margin: 0 0 0 auto;
+            }
+            .cancelar{
+                background-color: transparent;
+                color: $blue;
+                border: 1px solid $blue;
+                margin: 0 auto 0 0;
+                &:hover{                    
+                    background-color: $blue;
+                    color: $offwhite;
+                    border-color: $offwhite;                    
+                }                
+            }
+        }
+        
+    }
+    
 }
 
 #loading-screen{
