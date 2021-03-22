@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/*
+font-family: 'Roboto', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
+font-family: 'Kanit', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+*/
+
+$blue: #263C88; 
+$offwhite: #f7f7f7;
+
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: $offwhite;
+    height: 100vh;
+    h1{
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 600;
+        color: $blue;
+    }
+    nav{
+        background-color: $offwhite;
+        border-radius: 1.4em;
+        margin: 0.5em;
+        //box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        
+        a{
+            width: 20%;
+            height: auto;
+            text-align: center;
+            color: $blue;
+            i{
+                font-size: 1.5em;
+            }
+        }
+    }
+    #header{
+        margin: 1em 0 2em 0.6em;
+        position: fixed;
+        top: 0;
+        z-index: 99;
+    }
+    #list{
+        top: 6em;
+        left: 0;
+        z-index: 0;
+        position: absolute;
+        width: 100%;
+        height: 80vh;
+        overflow: scroll;
+        .pill{
+            width: 100%;
+            height: 5em;
+            background-color: hsla(227, 56%, 44%, 0.904);
+            border-radius: 2em;
+            margin: 0.5em 0;
+            padding: 0 1em;
+            .pill-header{
+                position: relative;
+                font-weight: 700;
+                text-transform: uppercase;
+                font-family: 'Josefin Sans', sans-serif;
+                font-size: 0.8em;
+                color: hsla(0, 0%, 97%, 0.705);
+                display: block;
+                .pill-name{
+                    float: left;
+                    margin: 0 0.5em;
+                    display: block;
+                }
+                .pill-time{
+                    float: right;
+                    margin: 0 0.5em;
+                    display: block;
+                }
+            }
+            .pill-content{
+                
+            }
+        }
+    }
+}
+
+#loading-screen{
+    width: 100%;
+    height: 100vh;
+    background-color: $offwhite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    overflow: hidden !important;
+    transition: ease-out;
+    .center{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        span{
+            width: 1em;
+            height: 3.2em;
+            background-color: $blue;
+            margin: 0 0.15em;
+            display: inline-block;
+        }
+        span:nth-child(1){
+            animation: grow 0.5s -0.45s ease-in-out alternate infinite;
+        }
+        span:nth-child(2){
+            animation: grow 0.5s -0.3s ease-in-out alternate infinite;
+        }
+        span:nth-child(3){
+            animation: grow 0.5s -0.15s ease-in-out alternate infinite;
+        }
+        span:nth-child(4){
+            animation: grow 0.5s 0s ease-in-out alternate infinite;
+        }
+        @keyframes grow{
+            to{
+                transform: scaleY(2);
+            }
+        }
+    }
+}
