@@ -2,22 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 /*
 font-family: 'Roboto', sans-serif;
 font-family: 'Source Sans Pro', sans-serif;
 font-family: 'Kanit', sans-serif;
 font-family: 'Josefin Sans', sans-serif;
+font-family: 'Inter', sans-serif;
 */
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   background-color: #f7f7f7;
   height: 100vh;
 }
 
 body h1 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
   color: #263C88;
+  font-size: 2em;
 }
 
 body nav {
@@ -58,23 +61,36 @@ body #list {
 
 body #list .pill {
   width: 100%;
-  height: 5em;
-  background-color: rgba(49, 77, 175, 0.904);
-  border-radius: 2em;
+  height: 9em;
+  background: #1949f5;
+  background: linear-gradient(162deg, #1949f5 0%, #223da0 35%, #263c88 100%);
+  border-radius: 1.5em;
   margin: 0.5em 0;
-  padding: 0 1em;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding: 1.2em 1em;
+  -webkit-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+          box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 body #list .pill .pill-header {
   position: relative;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.8em;
-  color: rgba(247, 247, 247, 0.705);
+  color: rgba(247, 247, 247, 0.904);
   display: block;
+  clear: both;
+}
+
+body #list .pill .pill-header .car-plate-span {
+  width: auto;
+  padding: .5em 1em;
+  height: auto;
+  background-color: rgba(22, 35, 80, 0.301);
+  border-radius: .7em;
+  float: right;
+  display: block;
+  letter-spacing: .2em;
 }
 
 body #list .pill .pill-header .pill-name {
@@ -87,6 +103,33 @@ body #list .pill .pill-header .pill-time {
   float: right;
   margin: 0 0.5em;
   display: block;
+}
+
+body #list .pill .pill-content .tab {
+  width: .4em;
+  height: 100%;
+  background-color: #f7f7f7;
+  display: inline-block;
+}
+
+body #list .pill .pill-content h4 {
+  color: #f7f7f7;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: .05em;
+  font-size: 1.3em;
+}
+
+body #list .pill .pill-content p {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #bfc9ed;
+  font-weight: 500;
+  padding: 0;
+  margin: 0.3em 0 0 0;
+  font-size: 1em;
+  letter-spacing: .025em;
 }
 
 body .modal .modal-content {
@@ -102,6 +145,7 @@ body .modal .modal-content .modal-header .modal-title {
   font-size: 2em;
   font-weight: 900;
   text-transform: uppercase;
+  font-family: "Inter", sans-serif;
 }
 
 body .modal .modal-content .modal-footer {
@@ -168,7 +212,6 @@ body .modal .modal-content .modal-body .os-form .os-form-control {
   color: #263C88;
   background-color: transparent;
   border: 1px solid rgba(38, 60, 136, 0.25);
-  text-transform: uppercase;
   display: block;
   width: 100%;
   padding: .375rem .75rem;
@@ -194,26 +237,34 @@ body .modal .modal-content .modal-body .os-form .os-form-control:focus {
           box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
 }
 
-body .modal .modal-content .modal-body .os-form #payment .btn-check:active + .check, body .modal .modal-content .modal-body .os-form #payment .btn-check:checked + .check, body .modal .modal-content .modal-body .os-form #payment .check:active {
+body .modal .modal-content .modal-body .os-form #payment .btn-check:active + .check, body .modal .modal-content .modal-body .os-form #payment .btn-check:checked + .check, body .modal .modal-content .modal-body .os-form #payment .check:active, body .modal .modal-content .modal-body .os-form #service .btn-check:active + .check, body .modal .modal-content .modal-body .os-form #service .btn-check:checked + .check, body .modal .modal-content .modal-body .os-form #service .check:active {
   color: #f7f7f7 !important;
   background-color: #263C88 !important;
   border-color: #263C88 !important;
 }
 
-body .modal .modal-content .modal-body .os-form #payment .check {
+body .modal .modal-content .modal-body .os-form #payment .check, body .modal .modal-content .modal-body .os-form #service .check {
   width: 100%;
   color: #263C88;
   border-color: #263C88;
 }
 
-body .modal .modal-content .modal-body .os-form #payment .check:active {
+body .modal .modal-content .modal-body .os-form #payment .check:active, body .modal .modal-content .modal-body .os-form #service .check:active {
   color: #f7f7f7;
   background-color: #263C88;
   border-color: #263C88;
 }
 
-body .modal .modal-content .modal-body .os-form #payment .col {
+body .modal .modal-content .modal-body .os-form #payment .col, body .modal .modal-content .modal-body .os-form #service .col {
   padding: 0;
+}
+
+body .modal .modal-content .modal-body .os-form #phone .col-3 {
+  padding-right: 0;
+}
+
+body .modal .modal-content .modal-body .os-form #phone .col-9 {
+  padding-left: .5em;
 }
 
 #loading-screen {

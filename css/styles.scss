@@ -2,31 +2,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @mixin shadow1 {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 @mixin shadow2 {
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+@mixin gradient-bg {
+    background: rgb(25,73,245);
+    background: linear-gradient(162deg, rgba(25,73,245,1) 0%, rgba(34,61,160,1) 35%, rgba(38,60,136,1) 100%);
 }
 /*
 font-family: 'Roboto', sans-serif;
 font-family: 'Source Sans Pro', sans-serif;
 font-family: 'Kanit', sans-serif;
 font-family: 'Josefin Sans', sans-serif;
+font-family: 'Inter', sans-serif;
 */
 
 $blue: #263C88; 
 $offwhite: #f7f7f7;
+$fontInter: 'Inter', sans-serif;
+$fontSource: 'Source Sans Pro', sans-serif;
 
 body{
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: $fontSource;
     background-color: $offwhite;
     height: 100vh;
     h1{
-        font-family: 'Josefin Sans', sans-serif;
-        font-weight: 600;
+        font-family: $fontInter;
+        font-weight: 900;
         color: $blue;
+        font-size: 2em;
     }
     nav{
         background-color: $offwhite;
@@ -60,20 +69,31 @@ body{
         overflow: scroll;
         .pill{
             width: 100%;
-            height: 5em;
-            background-color: hsla(227, 56%, 44%, 0.904);
-            border-radius: 2em;
+            height: 9em;
+            @include gradient-bg;
+            border-radius: 1.5em;
             margin: 0.5em 0;
-            padding: 0 1em;
-            @include shadow2;
+            padding: 1.2em 1em;
+            @include shadow1;
             .pill-header{
                 position: relative;
-                font-weight: 700;
+                font-weight: 500;
                 text-transform: uppercase;
-                font-family: 'Josefin Sans', sans-serif;
+                font-family: $fontInter;
                 font-size: 0.8em;
-                color: hsla(0, 0%, 97%, 0.705);
+                color: hsla(0, 0%, 97%, 0.904);
                 display: block;
+                clear: both;
+                .car-plate-span{
+                    width: auto;
+                    padding: .5em 1em;
+                    height: auto;
+                    background-color: hsla(227, 56%, 20%, 0.301);
+                    border-radius: .7em;
+                    float: right;
+                    display: block;                    
+                    letter-spacing: .2em;
+                }
                 .pill-name{
                     float: left;
                     margin: 0 0.5em;
@@ -83,6 +103,32 @@ body{
                     float: right;
                     margin: 0 0.5em;
                     display: block;
+                }
+            }
+            .pill-content{
+                .tab{
+                    width: .4em;
+                    height: 100%;
+                    background-color: #f7f7f7;
+                    display: inline-block;
+                }
+                h4{
+                    color: $offwhite;
+                    font-weight: 500;
+                    padding: 0;
+                    margin: 0;
+                    line-height: 1.6;
+                    letter-spacing: .05em;
+                    font-size: 1.3em;
+                }
+                p{
+                    font-family: $fontSource;
+                    color: hsl(227, 56%, 84%);
+                    font-weight: 500;
+                    padding: 0;
+                    margin: 0.3em 0 0 0;
+                    font-size: 1em;
+                    letter-spacing: .025em;
                 }
             }
         }
@@ -97,7 +143,7 @@ body{
                     font-size: 2em;
                     font-weight: 900;
                     text-transform: uppercase;
-
+                    font-family: $fontInter;
                 }
             }
             .modal-footer{
@@ -153,7 +199,6 @@ body{
                         color: $blue;
                         background-color: transparent;
                         border: 1px solid rgba(38, 60, 136, 0.25);
-                        text-transform: uppercase;
                         display: block;
                         width: 100%;
                         padding: .375rem .75rem;
@@ -173,7 +218,7 @@ body{
                             box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
                         }
                     }
-                    #payment{
+                    #payment, #service{
                         .btn-check:active+.check, .btn-check:checked+.check, .check:active {
                             color: $offwhite !important;
                             background-color: $blue !important;
@@ -191,6 +236,14 @@ body{
                         }
                         .col{
                             padding: 0;
+                        }
+                    }
+                    #phone{
+                        .col-3{
+                            padding-right: 0;
+                        }
+                        .col-9{
+                            padding-left: .5em;
                         }
                     }
                 }
