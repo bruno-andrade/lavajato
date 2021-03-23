@@ -88,30 +88,115 @@ body{
         }
     }
     .modal{
-        .modal-footer{
-            button{
-                width: 49%;
+        .modal-content{
+            background-color: $offwhite;
+            .modal-header{
+                border-bottom: none;
+                .modal-title{
+                    color: $blue;
+                    font-size: 2em;
+                    font-weight: 900;
+                    text-transform: uppercase;
+
+                }
             }
-            .salvar{
-                background-color: $blue;
-                color: $offwhite;
-                margin: 0 0 0 auto;
-            }
-            .cancelar{
-                background-color: transparent;
-                color: $blue;
-                border: 1px solid $blue;
-                margin: 0 auto 0 0;
-                &:hover{                    
+            .modal-footer{
+                border-top: none;
+                button{
+                    width: 49%;
+                }
+                .salvar{
                     background-color: $blue;
                     color: $offwhite;
-                    border-color: $offwhite;                    
-                }                
+                    margin: 0 0 0 auto;
+                }
+                .cancelar{
+                    background-color: transparent;
+                    color: $blue;
+                    border: 1px solid $blue;
+                    margin: 0 auto 0 0;
+                    &:hover{                    
+                        background-color: $blue;
+                        color: $offwhite;
+                        border-color: $offwhite;                    
+                    }                
+                }
+            }
+            .modal-body{
+                .datetime{
+                    margin-bottom: 2.5em;
+                    font-size: 1.2em;
+                    label{
+                        display: block;
+                        width: auto;
+                        color: $blue;
+                        font-weight: 700;
+                    }
+                    .date{
+                        float: left;
+                    }
+                    .time{
+                        float: right;
+                    }
+                }
+                
+                .os-form{
+                    clear: both;
+                    .os-form-block{
+                        margin-bottom: 2em;
+                    }
+                    .os-form-label{
+                        margin-bottom: .2em;
+                        display: block;
+                    }
+                    .os-form-control{                        
+                        color: $blue;
+                        background-color: transparent;
+                        border: 1px solid rgba(38, 60, 136, 0.25);
+                        text-transform: uppercase;
+                        display: block;
+                        width: 100%;
+                        padding: .375rem .75rem;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        background-clip: padding-box;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        border-radius: .25rem;
+                        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                        &:focus{
+                            background-color: transparent;
+                            border-color: rgba(38, 60, 136, 0.25);
+                            outline: 0;
+                            box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
+                        }
+                    }
+                    #payment{
+                        .btn-check:active+.check, .btn-check:checked+.check, .check:active {
+                            color: $offwhite !important;
+                            background-color: $blue !important;
+                            border-color: $blue !important;
+                        }
+                        .check{
+                            width: 100%;
+                            &:active{
+                                color: $offwhite;
+                                background-color: $blue;
+                                border-color: $blue;
+                            }
+                            color: $blue;
+                            border-color: $blue;
+                        }
+                        .col{
+                            padding: 0;
+                        }
+                    }
+                }
             }
         }
-        
     }
-    
 }
 
 #loading-screen{

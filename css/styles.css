@@ -89,27 +89,131 @@ body #list .pill .pill-header .pill-time {
   display: block;
 }
 
-body .modal .modal-footer button {
+body .modal .modal-content {
+  background-color: #f7f7f7;
+}
+
+body .modal .modal-content .modal-header {
+  border-bottom: none;
+}
+
+body .modal .modal-content .modal-header .modal-title {
+  color: #263C88;
+  font-size: 2em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+body .modal .modal-content .modal-footer {
+  border-top: none;
+}
+
+body .modal .modal-content .modal-footer button {
   width: 49%;
 }
 
-body .modal .modal-footer .salvar {
+body .modal .modal-content .modal-footer .salvar {
   background-color: #263C88;
   color: #f7f7f7;
   margin: 0 0 0 auto;
 }
 
-body .modal .modal-footer .cancelar {
+body .modal .modal-content .modal-footer .cancelar {
   background-color: transparent;
   color: #263C88;
   border: 1px solid #263C88;
   margin: 0 auto 0 0;
 }
 
-body .modal .modal-footer .cancelar:hover {
+body .modal .modal-content .modal-footer .cancelar:hover {
   background-color: #263C88;
   color: #f7f7f7;
   border-color: #f7f7f7;
+}
+
+body .modal .modal-content .modal-body .datetime {
+  margin-bottom: 2.5em;
+  font-size: 1.2em;
+}
+
+body .modal .modal-content .modal-body .datetime label {
+  display: block;
+  width: auto;
+  color: #263C88;
+  font-weight: 700;
+}
+
+body .modal .modal-content .modal-body .datetime .date {
+  float: left;
+}
+
+body .modal .modal-content .modal-body .datetime .time {
+  float: right;
+}
+
+body .modal .modal-content .modal-body .os-form {
+  clear: both;
+}
+
+body .modal .modal-content .modal-body .os-form .os-form-block {
+  margin-bottom: 2em;
+}
+
+body .modal .modal-content .modal-body .os-form .os-form-label {
+  margin-bottom: .2em;
+  display: block;
+}
+
+body .modal .modal-content .modal-body .os-form .os-form-control {
+  color: #263C88;
+  background-color: transparent;
+  border: 1px solid rgba(38, 60, 136, 0.25);
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-clip: padding-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: .25rem;
+  -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+
+body .modal .modal-content .modal-body .os-form .os-form-control:focus {
+  background-color: transparent;
+  border-color: rgba(38, 60, 136, 0.25);
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
+          box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
+}
+
+body .modal .modal-content .modal-body .os-form #payment .btn-check:active + .check, body .modal .modal-content .modal-body .os-form #payment .btn-check:checked + .check, body .modal .modal-content .modal-body .os-form #payment .check:active {
+  color: #f7f7f7 !important;
+  background-color: #263C88 !important;
+  border-color: #263C88 !important;
+}
+
+body .modal .modal-content .modal-body .os-form #payment .check {
+  width: 100%;
+  color: #263C88;
+  border-color: #263C88;
+}
+
+body .modal .modal-content .modal-body .os-form #payment .check:active {
+  color: #f7f7f7;
+  background-color: #263C88;
+  border-color: #263C88;
+}
+
+body .modal .modal-content .modal-body .os-form #payment .col {
+  padding: 0;
 }
 
 #loading-screen {
