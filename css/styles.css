@@ -49,7 +49,7 @@ body #header {
   z-index: 99;
 }
 
-body #list {
+body #main {
   top: 6em;
   left: 0;
   z-index: 0;
@@ -62,8 +62,8 @@ body #list {
 body #list .pill {
   width: 100%;
   height: 9em;
-  background: #1949f5;
-  background: linear-gradient(162deg, #1949f5 0%, #223da0 35%, #263c88 100%);
+  background: #2858cf;
+  background: linear-gradient(162deg, #2858cf 0%, #223da0 35%, #263c88 100%);
   border-radius: 1.5em;
   margin: 0.5em 0;
   padding: 1.2em 1em;
@@ -132,15 +132,15 @@ body #list .pill .pill-content p {
   letter-spacing: .025em;
 }
 
-body .modal .modal-content {
+body #os-modal .modal .modal-content {
   background-color: #f7f7f7;
 }
 
-body .modal .modal-content .modal-header {
+body #os-modal .modal .modal-content .modal-header {
   border-bottom: none;
 }
 
-body .modal .modal-content .modal-header .modal-title {
+body #os-modal .modal .modal-content .modal-header .modal-title {
   color: #263C88;
   font-size: 2em;
   font-weight: 900;
@@ -148,67 +148,67 @@ body .modal .modal-content .modal-header .modal-title {
   font-family: "Inter", sans-serif;
 }
 
-body .modal .modal-content .modal-footer {
+body #os-modal .modal .modal-content .modal-footer {
   border-top: none;
 }
 
-body .modal .modal-content .modal-footer button {
+body #os-modal .modal .modal-content .modal-footer button {
   width: 49%;
 }
 
-body .modal .modal-content .modal-footer .salvar {
+body #os-modal .modal .modal-content .modal-footer .salvar {
   background-color: #263C88;
   color: #f7f7f7;
   margin: 0 0 0 auto;
 }
 
-body .modal .modal-content .modal-footer .cancelar {
+body #os-modal .modal .modal-content .modal-footer .cancelar {
   background-color: transparent;
   color: #263C88;
   border: 1px solid #263C88;
   margin: 0 auto 0 0;
 }
 
-body .modal .modal-content .modal-footer .cancelar:hover {
+body #os-modal .modal .modal-content .modal-footer .cancelar:hover {
   background-color: #263C88;
   color: #f7f7f7;
   border-color: #f7f7f7;
 }
 
-body .modal .modal-content .modal-body .datetime {
+body #os-modal .modal .modal-content .modal-body .datetime {
   margin-bottom: 2.5em;
   font-size: 1.2em;
 }
 
-body .modal .modal-content .modal-body .datetime label {
+body #os-modal .modal .modal-content .modal-body .datetime label {
   display: block;
   width: auto;
   color: #263C88;
   font-weight: 700;
 }
 
-body .modal .modal-content .modal-body .datetime .date {
+body #os-modal .modal .modal-content .modal-body .datetime .date {
   float: left;
 }
 
-body .modal .modal-content .modal-body .datetime .time {
+body #os-modal .modal .modal-content .modal-body .datetime .time {
   float: right;
 }
 
-body .modal .modal-content .modal-body .os-form {
+body #os-modal .modal .modal-content .modal-body .os-form {
   clear: both;
 }
 
-body .modal .modal-content .modal-body .os-form .os-form-block {
+body #os-modal .modal .modal-content .modal-body .os-form .os-form-block {
   margin-bottom: 2em;
 }
 
-body .modal .modal-content .modal-body .os-form .os-form-label {
+body #os-modal .modal .modal-content .modal-body .os-form .os-form-label {
   margin-bottom: .2em;
   display: block;
 }
 
-body .modal .modal-content .modal-body .os-form .os-form-control {
+body #os-modal .modal .modal-content .modal-body .os-form .os-form-control {
   color: #263C88;
   background-color: transparent;
   border: 1px solid rgba(38, 60, 136, 0.25);
@@ -229,7 +229,7 @@ body .modal .modal-content .modal-body .os-form .os-form-control {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
 
-body .modal .modal-content .modal-body .os-form .os-form-control:focus {
+body #os-modal .modal .modal-content .modal-body .os-form .os-form-control:focus {
   background-color: transparent;
   border-color: rgba(38, 60, 136, 0.25);
   outline: 0;
@@ -237,34 +237,119 @@ body .modal .modal-content .modal-body .os-form .os-form-control:focus {
           box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
 }
 
-body .modal .modal-content .modal-body .os-form #payment .btn-check:active + .check, body .modal .modal-content .modal-body .os-form #payment .btn-check:checked + .check, body .modal .modal-content .modal-body .os-form #payment .check:active, body .modal .modal-content .modal-body .os-form #service .btn-check:active + .check, body .modal .modal-content .modal-body .os-form #service .btn-check:checked + .check, body .modal .modal-content .modal-body .os-form #service .check:active {
+body #os-modal .modal .modal-content .modal-body .os-form #payment .btn-check:active + .check, body #os-modal .modal .modal-content .modal-body .os-form #payment .btn-check:checked + .check, body #os-modal .modal .modal-content .modal-body .os-form #payment .check:active, body #os-modal .modal .modal-content .modal-body .os-form #service .btn-check:active + .check, body #os-modal .modal .modal-content .modal-body .os-form #service .btn-check:checked + .check, body #os-modal .modal .modal-content .modal-body .os-form #service .check:active {
   color: #f7f7f7 !important;
   background-color: #263C88 !important;
   border-color: #263C88 !important;
 }
 
-body .modal .modal-content .modal-body .os-form #payment .check, body .modal .modal-content .modal-body .os-form #service .check {
+body #os-modal .modal .modal-content .modal-body .os-form #payment .check, body #os-modal .modal .modal-content .modal-body .os-form #service .check {
   width: 100%;
   color: #263C88;
   border-color: #263C88;
 }
 
-body .modal .modal-content .modal-body .os-form #payment .check:active, body .modal .modal-content .modal-body .os-form #service .check:active {
+body #os-modal .modal .modal-content .modal-body .os-form #payment .check:active, body #os-modal .modal .modal-content .modal-body .os-form #service .check:active {
   color: #f7f7f7;
   background-color: #263C88;
   border-color: #263C88;
 }
 
-body .modal .modal-content .modal-body .os-form #payment .col, body .modal .modal-content .modal-body .os-form #service .col {
+body #os-modal .modal .modal-content .modal-body .os-form #payment .col, body #os-modal .modal .modal-content .modal-body .os-form #service .col {
   padding: 0;
 }
 
-body .modal .modal-content .modal-body .os-form #phone .col-3 {
+body #os-modal .modal .modal-content .modal-body .os-form #phone .col-3 {
   padding-right: 0;
 }
 
-body .modal .modal-content .modal-body .os-form #phone .col-9 {
+body #os-modal .modal .modal-content .modal-body .os-form #phone .col-9 {
   padding-left: .5em;
+}
+
+body #clients .articles a {
+  text-decoration: none !important;
+  display: block;
+  margin-bottom: 0;
+  color: #555;
+}
+
+body #clients .articles .badge {
+  font-size: 0.7em;
+  padding: 5px 10px;
+  line-height: 1;
+  margin-left: 10px;
+}
+
+body #clients .articles .item {
+  padding: 20px;
+}
+
+body #clients .articles .item .image {
+  min-width: 50px;
+  max-width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+body #clients .articles .item img {
+  padding: 3px;
+  border: 1px solid #28a745;
+}
+
+body #clients .articles .item h3 {
+  color: #555;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+body #clients .articles .item small {
+  color: #aaa;
+  font-size: 0.75em;
+}
+
+body #clients .articles .item:nth-of-type(even) {
+  background: #fafafa;
+}
+
+body #clients .card-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+body #clients .card-close .dropdown-toggle {
+  color: #999;
+  background: none;
+  border: none;
+}
+
+body #clients .card-close .dropdown-toggle:after {
+  display: none;
+}
+
+body #clients .card-close .dropdown-menu {
+  border: none;
+  min-width: auto;
+  font-size: 0.9em;
+  border-radius: 0;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1), -2px -2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1), -2px -2px 3px rgba(0, 0, 0, 0.1);
+}
+
+body #clients .card-close .dropdown-menu a {
+  color: #999 !important;
+}
+
+body #clients .card-close .dropdown-menu a:hover {
+  background: #796AEE;
+  color: #fff !important;
+}
+
+body #clients .card-close .dropdown-menu a i {
+  margin-right: 10px;
+  -webkit-transition: none;
+  transition: none;
 }
 
 #loading-screen {
