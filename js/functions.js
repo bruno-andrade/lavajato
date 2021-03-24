@@ -1,0 +1,22 @@
+$(document).ready(function(){
+    $("#menu-clients").click(function(){
+        $(function(){
+            $("#main").load("clients.html"); 
+        });
+    })
+    $("#menu-list").click(function(){
+        $(function(){
+            $("#main").load("list.html"); 
+        });
+    })
+    $("#menu-dashboard").click(function(){
+        $(function(){
+            $("#main").load("dashboard.html"); 
+        });
+    })
+    $("#menu-car-plates").click(function(){
+        $(function(){
+            $("#main").load("carplates.html"); 
+        });
+    })
+});
