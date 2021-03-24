@@ -10,6 +10,12 @@ font-family: 'Kanit', sans-serif;
 font-family: 'Josefin Sans', sans-serif;
 font-family: 'Inter', sans-serif;
 */
+/* DARK THEME
+    $blue: #263C88;
+    $background: hsl(0, 0%, 7%);
+    $pill-bg: hsl(0, 0%, 11%);
+    $fontColor: #d8d8d8;
+*/
 body {
   font-family: "Source Sans Pro", sans-serif;
   background-color: #f7f7f7;
@@ -31,11 +37,35 @@ body nav {
           box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
+body nav.navbar {
+  padding: 0;
+}
+
+body nav .container-fluid {
+  padding: 0;
+}
+
 body nav a {
   width: 20%;
   height: auto;
   text-align: center;
   color: #263C88;
+  border-radius: 1.4em;
+  -webkit-transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
+body nav a.nav-link {
+  padding: 1em;
+  -webkit-transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
+body nav a.nav-link:active, body nav a.nav-link:focus, body nav a.nav-link:hover {
+  background-color: #263C88;
+  color: #f7f7f7;
+  -webkit-transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
 }
 
 body nav a i {
@@ -43,14 +73,21 @@ body nav a i {
 }
 
 body #header {
-  margin: 1em 0 2em 0.6em;
+  margin: 1em 0 1em 0.6em;
+  height: 3em;
   position: fixed;
   top: 0;
   z-index: 99;
 }
 
+body #header h1 {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
 body #main {
-  top: 6em;
+  top: 5em;
+  margin-top: 0;
   left: 0;
   z-index: 0;
   position: absolute;
@@ -67,13 +104,12 @@ body #list {
 body #list .pill {
   width: 100%;
   height: 9em;
-  background: #2858cf;
-  background: linear-gradient(162deg, #2858cf 0%, #223da0 35%, #263c88 100%);
+  background-color: #f7f7f7;
   border-radius: 1.5em;
-  margin: 0.5em 0;
+  margin: 1em 0;
   padding: 1.2em 1em;
-  -webkit-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-          box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 
 body #list .pill .pill-header {
@@ -82,7 +118,7 @@ body #list .pill .pill-header {
   text-transform: uppercase;
   font-family: "Inter", sans-serif;
   font-size: 0.8em;
-  color: rgba(247, 247, 247, 0.904);
+  color: #263C88;
   display: block;
   clear: both;
 }
@@ -91,7 +127,7 @@ body #list .pill .pill-header .car-plate-span {
   width: auto;
   padding: .5em 1em;
   height: auto;
-  background-color: rgba(22, 35, 80, 0.301);
+  background-color: rgba(22, 35, 80, 0.075);
   border-radius: .7em;
   float: right;
   display: block;
@@ -118,23 +154,26 @@ body #list .pill .pill-content .tab {
 }
 
 body #list .pill .pill-content h4 {
-  color: #f7f7f7;
-  font-weight: 500;
+  color: #263C88;
+  font-weight: 700;
   padding: 0;
   margin: 0;
-  line-height: 1.6;
-  letter-spacing: .05em;
+  line-height: 1.7;
   font-size: 1.3em;
 }
 
 body #list .pill .pill-content p {
   font-family: "Source Sans Pro", sans-serif;
-  color: #bfc9ed;
+  color: rgba(38, 59, 135, 0.707);
   font-weight: 500;
   padding: 0;
   margin: 0.3em 0 0 0;
   font-size: 1em;
   letter-spacing: .025em;
+}
+
+body #list .pill .pill-content div {
+  margin-top: .7em;
 }
 
 body #os-modal .modal .modal-content {
@@ -159,6 +198,7 @@ body #os-modal .modal .modal-content .modal-footer {
 
 body #os-modal .modal .modal-content .modal-footer button {
   width: 49%;
+  border-radius: .5em;
 }
 
 body #os-modal .modal .modal-content .modal-footer .salvar {
@@ -181,15 +221,16 @@ body #os-modal .modal .modal-content .modal-footer .cancelar:hover {
 }
 
 body #os-modal .modal .modal-content .modal-body .datetime {
-  margin-bottom: 2.5em;
-  font-size: 1.2em;
+  margin: 0 0 3em 0;
+  font-size: 1.4em;
 }
 
 body #os-modal .modal .modal-content .modal-body .datetime label {
   display: block;
   width: auto;
+  opacity: 70%;
   color: #263C88;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 body #os-modal .modal .modal-content .modal-body .datetime .date {
@@ -210,13 +251,19 @@ body #os-modal .modal .modal-content .modal-body .os-form .os-form-block {
 
 body #os-modal .modal .modal-content .modal-body .os-form .os-form-label {
   margin-bottom: .2em;
+  margin-left: .1em;
   display: block;
+  color: rgba(27, 42, 95, 0.801);
+  font-weight: 700;
 }
 
 body #os-modal .modal .modal-content .modal-body .os-form .os-form-control {
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  height: 3em;
   color: #263C88;
   background-color: transparent;
-  border: 1px solid rgba(38, 60, 136, 0.25);
+  border: none;
   display: block;
   width: 100%;
   padding: .375rem .75rem;
@@ -227,37 +274,45 @@ body #os-modal .modal .modal-content .modal-body .os-form .os-form-control {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: .25rem;
-  -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-  transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  border-radius: .5rem;
+  -webkit-transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), -webkit-box-shadow 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), -webkit-box-shadow 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), box-shadow 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), box-shadow 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), -webkit-box-shadow 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05);
 }
 
 body #os-modal .modal .modal-content .modal-body .os-form .os-form-control:focus {
-  background-color: transparent;
-  border-color: rgba(38, 60, 136, 0.25);
+  background-color: #fff;
   outline: 0;
-  -webkit-box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
-          box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  -webkit-transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), -webkit-box-shadow 0.15s;
+  transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), -webkit-box-shadow 0.15s;
+  transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), box-shadow 0.15s;
+  transition: 0.15s cubic-bezier(0.6, -0.28, 0.74, 0.05), box-shadow 0.15s, -webkit-box-shadow 0.15s;
 }
 
 body #os-modal .modal .modal-content .modal-body .os-form #payment .btn-check:active + .check, body #os-modal .modal .modal-content .modal-body .os-form #payment .btn-check:checked + .check, body #os-modal .modal .modal-content .modal-body .os-form #payment .check:active, body #os-modal .modal .modal-content .modal-body .os-form #service .btn-check:active + .check, body #os-modal .modal .modal-content .modal-body .os-form #service .btn-check:checked + .check, body #os-modal .modal .modal-content .modal-body .os-form #service .check:active {
   color: #f7f7f7 !important;
   background-color: #263C88 !important;
   border-color: #263C88 !important;
+  -webkit-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+          box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  -webkit-transition: 0.2s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.74, 0.05);
 }
 
 body #os-modal .modal .modal-content .modal-body .os-form #payment .check, body #os-modal .modal .modal-content .modal-body .os-form #service .check {
+  border: none;
+  background-color: rgba(38, 59, 135, 0.02);
   width: 100%;
   color: #263C88;
-  border-color: #263C88;
+  border-radius: .5em;
 }
 
 body #os-modal .modal .modal-content .modal-body .os-form #payment .check:active, body #os-modal .modal .modal-content .modal-body .os-form #service .check:active {
   color: #f7f7f7;
   background-color: #263C88;
-  border-color: #263C88;
 }
 
 body #os-modal .modal .modal-content .modal-body .os-form #payment .col, body #os-modal .modal .modal-content .modal-body .os-form #service .col {

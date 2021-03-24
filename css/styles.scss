@@ -8,11 +8,13 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 @mixin shadow2 {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    //box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 @mixin gradient-bg {
-    background: rgb(40,88,207);
-    background: linear-gradient(162deg, rgba(40,88,207,1) 0%, rgba(34,61,160,1) 35%, rgba(38,60,136,1) 100%);
+    //background: rgb(40,88,207);
+    //background: linear-gradient(162deg, rgba(40,88,207,1) 0%, rgba(34,61,160,1) 35%, rgba(38,60,136,1) 100%);
+    background-color: hsl(0, 0%, 97%);
 }
 /*
 font-family: 'Roboto', sans-serif;
@@ -26,6 +28,13 @@ $blue: #263C88;
 $offwhite: #f7f7f7;
 $fontInter: 'Inter', sans-serif;
 $fontSource: 'Source Sans Pro', sans-serif;
+
+/* DARK THEME
+    $blue: #263C88;
+    $background: hsl(0, 0%, 7%);
+    $pill-bg: hsl(0, 0%, 11%);
+    $fontColor: #d8d8d8;
+*/
 
 body{
     font-family: $fontSource;
@@ -42,25 +51,49 @@ body{
         border-radius: 1.4em;
         margin: 0.5em;
         @include shadow1;
+        &.navbar{
+            padding: 0;
+        }
+        .container-fluid{
+            padding: 0;
+        }
         
         a{
             width: 20%;
             height: auto;
             text-align: center;
             color: $blue;
+            border-radius: 1.4em;
+            transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            &.nav-link{
+                padding: 1em;
+                transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                &:active, &:focus, &:hover{
+                    background-color: $blue;
+                    color: $offwhite;
+                    transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                }
+            }
+            
             i{
                 font-size: 1.5em;
             }
         }
     }
     #header{
-        margin: 1em 0 2em 0.6em;
+        margin: 1em 0 1em 0.6em;
+        height: 3em;
         position: fixed;
         top: 0;
         z-index: 99;
+        h1{
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
     }
     #main{        
-        top: 6em;
+        top: 5em;
+        margin-top: 0;
         left: 0;
         z-index: 0;
         position: absolute;
@@ -75,23 +108,24 @@ body{
             height: 9em;
             @include gradient-bg;
             border-radius: 1.5em;
-            margin: 0.5em 0;
+            margin: 1em 0;
             padding: 1.2em 1em;
-            @include shadow1;
+            @include shadow2;
             .pill-header{
                 position: relative;
                 font-weight: 500;
                 text-transform: uppercase;
                 font-family: $fontInter;
                 font-size: 0.8em;
-                color: hsla(0, 0%, 97%, 0.904);
+                //color: hsla(0, 0%, 97%, 0.904);
+                color: #263C88;
                 display: block;
                 clear: both;
                 .car-plate-span{
                     width: auto;
                     padding: .5em 1em;
                     height: auto;
-                    background-color: hsla(227, 56%, 20%, 0.301);
+                    background-color: hsla(227, 57%, 20%, 0.075);
                     border-radius: .7em;
                     float: right;
                     display: block;                    
@@ -116,22 +150,24 @@ body{
                     display: inline-block;
                 }
                 h4{
-                    color: $offwhite;
-                    font-weight: 500;
+                    color: $blue;
+                    font-weight: 700;
                     padding: 0;
                     margin: 0;
-                    line-height: 1.6;
-                    letter-spacing: .05em;
+                    line-height: 1.7;
                     font-size: 1.3em;
                 }
                 p{
                     font-family: $fontSource;
-                    color: hsl(227, 56%, 84%);
+                    color: hsla(227, 56%, 34%, 0.707);
                     font-weight: 500;
                     padding: 0;
                     margin: 0.3em 0 0 0;
                     font-size: 1em;
                     letter-spacing: .025em;
+                }
+                div{
+                    margin-top: .7em;
                 }
             }
         }
@@ -154,6 +190,7 @@ body{
                     border-top: none;
                     button{
                         width: 49%;
+                        border-radius: .5em;
                     }
                     .salvar{
                         background-color: $blue;
@@ -174,13 +211,14 @@ body{
                 }
                 .modal-body{
                     .datetime{
-                        margin-bottom: 2.5em;
-                        font-size: 1.2em;
+                        margin: 0 0 3em 0;
+                        font-size: 1.4em;
                         label{
                             display: block;
                             width: auto;
+                            opacity: 70%;
                             color: $blue;
-                            font-weight: 700;
+                            font-weight: 500;
                         }
                         .date{
                             float: left;
@@ -197,12 +235,17 @@ body{
                         }
                         .os-form-label{
                             margin-bottom: .2em;
+                            margin-left: .1em;
                             display: block;
+                            color: hsla(227, 56%, 24%, 0.801);
+                            font-weight: 700;
                         }
-                        .os-form-control{                        
+                        .os-form-control{     
+                            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                            height: 3em;                   
                             color: $blue;
                             background-color: transparent;
-                            border: 1px solid rgba(38, 60, 136, 0.25);
+                            border: none;
                             display: block;
                             width: 100%;
                             padding: .375rem .75rem;
@@ -213,13 +256,13 @@ body{
                             -webkit-appearance: none;
                             -moz-appearance: none;
                             appearance: none;
-                            border-radius: .25rem;
-                            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                            border-radius: .5rem;
+                            transition: .15s cubic-bezier(0.6, -0.28, 0.74, 0.05),box-shadow .15s cubic-bezier(0.6, -0.28, 0.74, 0.05);
                             &:focus{
-                                background-color: transparent;
-                                border-color: rgba(38, 60, 136, 0.25);
+                                background-color: #fff;
                                 outline: 0;
-                                box-shadow: 0 0 0 0.25rem rgba(38, 60, 136, 0.25);
+                                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                                transition: .15s cubic-bezier(0.6, -0.28, 0.74, 0.05),box-shadow .15s 
                             }
                         }
                         #payment, #service{
@@ -227,16 +270,20 @@ body{
                                 color: $offwhite !important;
                                 background-color: $blue !important;
                                 border-color: $blue !important;
+                                @include shadow1;
+                                transition: .2s cubic-bezier(0.6, -0.28, 0.74, 0.05);
                             }
                             .check{
+                                border: none;
+                                background-color: hsla(227, 56%, 34%, 0.02);
                                 width: 100%;
+                                color: $blue;
+                                border-radius: .5em;
                                 &:active{
                                     color: $offwhite;
                                     background-color: $blue;
-                                    border-color: $blue;
                                 }
-                                color: $blue;
-                                border-color: $blue;
+                                
                             }
                             .col{
                                 padding: 0;
