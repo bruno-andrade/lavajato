@@ -47,9 +47,8 @@ body{
         font-size: 2em;
     }
     
-    nav{         
+    nav{
         z-index: 1;
-        //background-color: transparent;
         background-color: rgba(255, 255, 255, .15);
         backdrop-filter: blur(5px);
         border-radius: 1.4em;
@@ -123,6 +122,9 @@ body{
         width: 100%;
         height: 100vh;
         overflow: scroll;
+    }
+    #list, #clients, #dashboard, #carplates{
+        margin-top: 5em !important;
     }
     #list{
         transition: 2s ease-in-out;
@@ -438,5 +440,10 @@ body{
                 transform: scaleY(2);
             }
         }
+    }
+}
+@supports (-ms-ime-align:auto) {
+    nav {
+        background-color: $offwhite !important;
     }
 }

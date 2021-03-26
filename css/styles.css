@@ -118,6 +118,10 @@ body #main {
   overflow: scroll;
 }
 
+body #list, body #clients, body #dashboard, body #carplates {
+  margin-top: 5em !important;
+}
+
 body #list {
   -webkit-transition: 2s ease-in-out;
   transition: 2s ease-in-out;
@@ -493,6 +497,12 @@ body #clients .card-close .dropdown-menu a i {
   to {
     -webkit-transform: scaleY(2);
             transform: scaleY(2);
+  }
+}
+
+@supports (-ms-ime-align: auto) {
+  nav {
+    background-color: #f7f7f7 !important;
   }
 }
 /*# sourceMappingURL=styles.css.map */
