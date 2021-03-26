@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $("#menu-clients").click(function(){
         $(function(){
-            $("#main").load("clients.html"); 
+            $("#main").load("contacts.html"); 
         });
     })
     $("#menu-list").click(function(){
