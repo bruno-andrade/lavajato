@@ -46,16 +46,35 @@ body{
         color: $blue;
         font-size: 2em;
     }
-    nav{
-        background-color: $offwhite;
+    
+    nav{         
+        z-index: 1;
+        //background-color: transparent;
+        background-color: rgba(255, 255, 255, .15);
+        backdrop-filter: blur(5px);
         border-radius: 1.4em;
         margin: 0.5em;
         @include shadow1;
         &.navbar{
             padding: 0;
         }
+        /*.container-fluid::before{
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+            filter: blur(10px);
+            background: inherit;
+        }*/
         .container-fluid{
+            position: relative;
+            z-index: 1;
             padding: 0;
+            background: inherit;
         }
         
         a{
@@ -81,24 +100,28 @@ body{
         }
     }
     #header{
-        margin: 1em 0 1em 0.6em;
-        height: 3em;
+        background-color: rgba(255, 255, 255, .15);
+        backdrop-filter: blur(15px);
+        padding: 1em 0 1em 0.6em;        
+        height: 5em;
+        width: 100%;
         position: fixed;
         top: 0;
-        z-index: 99;
+        z-index: 10;
+        
         h1{
             margin-bottom: 0;
             line-height: 1.6;
         }
     }
     #main{        
-        top: 5em;
+        top: 0;
         margin-top: 0;
         left: 0;
         z-index: 0;
         position: absolute;
         width: 100%;
-        height: 80vh;
+        height: 100vh;
         overflow: scroll;
     }
     #list{

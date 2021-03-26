@@ -30,11 +30,26 @@ body h1 {
 }
 
 body nav {
-  background-color: #f7f7f7;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   border-radius: 1.4em;
   margin: 0.5em;
   -webkit-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
           box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /*.container-fluid::before{
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+            filter: blur(10px);
+            background: inherit;
+        }*/
 }
 
 body nav.navbar {
@@ -42,7 +57,10 @@ body nav.navbar {
 }
 
 body nav .container-fluid {
+  position: relative;
+  z-index: 1;
   padding: 0;
+  background: inherit;
 }
 
 body nav a {
@@ -73,11 +91,15 @@ body nav a i {
 }
 
 body #header {
-  margin: 1em 0 1em 0.6em;
-  height: 3em;
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  padding: 1em 0 1em 0.6em;
+  height: 5em;
+  width: 100%;
   position: fixed;
   top: 0;
-  z-index: 99;
+  z-index: 10;
 }
 
 body #header h1 {
@@ -86,13 +108,13 @@ body #header h1 {
 }
 
 body #main {
-  top: 5em;
+  top: 0;
   margin-top: 0;
   left: 0;
   z-index: 0;
   position: absolute;
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   overflow: scroll;
 }
 
