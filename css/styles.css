@@ -129,6 +129,7 @@ body #list {
 }
 
 body #list .pill {
+  cursor: pointer;
   width: 100%;
   height: 9em;
   background-color: #f7f7f7;

@@ -130,6 +130,7 @@ body{
     #list{
         transition: 2s ease-in-out;
         .pill{
+            cursor: pointer;
             width: 100%;
             height: 9em;
             @include gradient-bg;

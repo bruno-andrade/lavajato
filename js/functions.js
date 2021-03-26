@@ -1,3 +1,4 @@
+// FUNÇÕES DO MENU
 $(document).ready(function(){
     $("#menu-clients").click(function(){
         $(function(){
@@ -20,3 +21,17 @@ $(document).ready(function(){
         });
     })
 });
+
+//LOADING SCREEN
+$(window).on('load', function() {
+    $('#loading-screen').remove();
+    $("#main").load("list.html");            
+});
+
+//"Function" para abrir o "Modal" da tela "List" para edição da OS
+function editModal() {
+    //let pill = document.getElementById(id);
+    
+}
+
+

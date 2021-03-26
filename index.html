@@ -40,7 +40,7 @@
 
   <!-- Modal -->
     <div id="os-modal">
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="osModal" tabindex="-1" aria-labelledby="osModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -159,8 +159,6 @@
                 </div>
             </div>
         </div>
-    </div>  
-
 
     <div id="loading-screen">
         <div class="center">
@@ -175,26 +173,22 @@
         <div class="container-fluid">
             <a id="menu-dashboard" class="nav-link"><i data-feather="bar-chart-2"></i></a>
             <a id="menu-list" class="nav-link"><i data-feather="list"></i></a>
-            <a class="nav-link" id="myInput" data-bs-toggle="modal" data-bs-target="#exampleModal"><i data-feather="plus-square"></i></a>
+            <a class="nav-link" id="osModalButton" data-bs-toggle="modal" data-bs-target="#osModal"><i data-feather="plus-square"></i></a>
             <a id="menu-clients" class="nav-link"><i data-feather="users"></i></a>
             <a id="menu-car-plates" class="nav-link" href="#"><i data-feather="credit-card"></i></a>
         </div>
     </nav>
 
     <script>
-        feather.replace({ 'width': 30, 'height': 30 })
+        feather.replace({ 'width': 30, 'height': 30 });
         
-        $(window).on('load', function() {
-            $('#loading-screen').remove();
-            $("#main").load("list.html");            
+        // MODAL DE NOVA OS
+        var osModal = document.getElementById('osModal');
+        var osModalButton = document.getElementById('osModalButton');
+        osModal.addEventListener('shown.bs.modal', function () {
+            osModalButton.focus();
         });
 
-        var myModal = document.getElementById('exampleModal');
-        var myInput = document.getElementById('myInput');
-
-        myModal.addEventListener('shown.bs.modal', function () {
-        myInput.focus()
-        })
     </script>    
     
 </body>
