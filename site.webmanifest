@@ -9,37 +9,37 @@
     "orientation": "portrait-primary",
     "icons":[
                 {
-                    "src":"images/android-chrome-192x192.png",
+                    "src":"lavajato/images/android-chrome-192x192.png",
                     "sizes":"192x192",
                     "type":"image/png",
                     "purpose": "maskable"
                 },
                 {
-                    "src":"images/android-chrome-512x512.png",
+                    "src":"lavajato/images/android-chrome-512x512.png",
                     "sizes":"512x512",
                     "type":"image/png",
                     "purpose": "maskable"
                 },
                 {
-                    "src": "images/favicon-144x144.png",
+                    "src": "lavajato/images/favicon-144x144.png",
                     "type": "image/png",
                     "sizes": "144x144",
                     "purpose": "maskable"
                 },
                 {
-                    "src": "images/favicon-16x16.png",
+                    "src": "lavajato/images/favicon-16x16.png",
                     "type": "image/png",
                     "sizes": "16x16",
                     "purpose": "maskable"
                 },
                 {
-                    "src": "images/favicon-32x32.png",
+                    "src": "lavajato/images/favicon-32x32.png",
                     "type": "image/png",
                     "sizes": "32x32",
                     "purpose": "maskable"
                 },
                 {
-                    "src": "images/apple-touch-icon.png",
+                    "src": "lavajato/images/apple-touch-icon.png",
                     "type": "image/png",
                     "sizes": "180x180",
                     "purpose": "maskable"
