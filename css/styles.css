@@ -224,7 +224,7 @@ body #list .pill .pill-content .tab {
   display: inline-block;
 }
 
-body #list .pill .pill-content h4 {
+body #list .pill .pill-content h2 {
   color: #263C88;
   font-weight: 700;
   padding: 0;
@@ -235,7 +235,7 @@ body #list .pill .pill-content h4 {
 
 body #list .pill .pill-content p {
   font-family: "Source Sans Pro", sans-serif;
-  color: rgba(38, 59, 135, 0.707);
+  color: rgba(38, 75, 207, 0.907);
   font-weight: 500;
   padding: 0;
   margin: 0.3em 0 0 0;
