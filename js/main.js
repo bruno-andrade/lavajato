@@ -8,4 +8,8 @@ if ('serviceWorker' in navigator) {
         console.log('ServiceWorker registration failed: ', err);
       });
     });
+
+    Notification.requestPermission(function(status) {
+        console.log('Notification permission status:', status);
+    });
 }

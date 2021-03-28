@@ -7,6 +7,7 @@
     "display":"standalone",
     "start_url": "/lavajato/",
     "orientation": "portrait-primary",
+    "categories": ["administration", "carwash"],
     "icons":[
                 {
                     "src":"images/android-chrome-192x192.png",
