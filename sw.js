@@ -1,18 +1,18 @@
 const cacheName = 'v1';
 
 const resourcesToPrecache = [
-'/',
-'/index.html',
-'/css/styles.css',
-'/carplates.html',
-'/contacts.html',
-'/dashboard.html',
-'/list.html',
-'/js/functions.js',
-'/js/chart.js',
-'/js/main.js',
-'/images/favicon.ico',
-'/site.webmanifest'
+'/lavajato/',
+'/lavajato/index.html',
+'/lavajato/css/styles.css',
+'/lavajato/carplates.html',
+'/lavajato/contacts.html',
+'/lavajato/dashboard.html',
+'/lavajato/list.html',
+'/lavajato/js/functions.js',
+'/lavajato/js/chart.js',
+'/lavajato/js/main.js',
+'/lavajato/images/favicon.ico',
+'/lavajato/site.webmanifest'
 ];
 
 self.addEventListener('install', (event) => {
