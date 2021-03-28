@@ -115,20 +115,27 @@ body #main {
   overflow: scroll;
 }
 
-body #list, body #clients, body #dashboard, body #carplates {
+body #list, body #clients, body #dashboard, body #car-plates {
   margin-top: 5em;
   margin-bottom: 5em;
 }
 
-body #list {
+body #list, body #car-plates {
   -webkit-transition: 2s ease-in-out;
   transition: 2s ease-in-out;
 }
 
-body #list .pill {
+body #list .plates, body #car-plates .plates {
+  height: 6.5em;
+}
+
+body #list .lists, body #car-plates .lists {
+  height: 9em;
+}
+
+body #list .pill, body #car-plates .pill {
   cursor: pointer;
   width: 100%;
-  height: 9em;
   background-color: #f7f7f7;
   border-radius: 1.5em;
   margin: 1em 0;
@@ -137,7 +144,7 @@ body #list .pill {
           box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 
-body #list .pill .pill-header {
+body #list .pill .pill-header, body #car-plates .pill .pill-header {
   position: relative;
   font-weight: 500;
   text-transform: uppercase;
@@ -147,7 +154,7 @@ body #list .pill .pill-header {
   display: block;
 }
 
-body #list .pill .pill-header .car-plate-span {
+body #list .pill .pill-header .car-plate-span, body #car-plates .pill .pill-header .car-plate-span {
   width: auto;
   padding: .5em 1em;
   height: auto;
@@ -158,29 +165,29 @@ body #list .pill .pill-header .car-plate-span {
   letter-spacing: .2em;
 }
 
-body #list .pill .pill-header .pill-name {
+body #list .pill .pill-header .pill-name, body #car-plates .pill .pill-header .pill-name {
   float: left;
   margin: 0 0.5em;
   display: block;
 }
 
-body #list .pill .pill-header .pill-time {
+body #list .pill .pill-header .pill-time, body #car-plates .pill .pill-header .pill-time {
   float: right;
   margin: 0 0.5em;
   display: block;
 }
 
-body #list .pill .pill-content {
+body #list .pill .pill-content, body #car-plates .pill .pill-content {
   height: auto;
 }
 
-body #list .pill .pill-content .desc {
+body #list .pill .pill-content .desc, body #car-plates .pill .pill-content .desc {
   width: 50%;
   height: auto;
   float: left;
 }
 
-body #list .pill .pill-content .actions {
+body #list .pill .pill-content .actions, body #car-plates .pill .pill-content .actions {
   padding: 0;
   width: 6.725em;
   height: 3em;
@@ -192,7 +199,7 @@ body #list .pill .pill-content .actions {
   right: 0;
 }
 
-body #list .pill .pill-content .actions a {
+body #list .pill .pill-content .actions a, body #car-plates .pill .pill-content .actions a {
   border-radius: .7em;
   padding: .75em .8em;
   margin: 0;
@@ -207,24 +214,24 @@ body #list .pill .pill-content .actions a {
           box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-body #list .pill .pill-content .actions a .action {
+body #list .pill .pill-content .actions a .action, body #car-plates .pill .pill-content .actions a .action {
   color: #263C88;
   height: auto;
   position: relative;
 }
 
-body #list .pill .pill-content .actions a.m {
+body #list .pill .pill-content .actions a.m, body #car-plates .pill .pill-content .actions a.m {
   margin-left: .5em;
 }
 
-body #list .pill .pill-content .tab {
+body #list .pill .pill-content .tab, body #car-plates .pill .pill-content .tab {
   width: .4em;
   height: 100%;
   background-color: #f7f7f7;
   display: inline-block;
 }
 
-body #list .pill .pill-content h2 {
+body #list .pill .pill-content h2, body #car-plates .pill .pill-content h2 {
   color: #263C88;
   font-weight: 700;
   padding: 0;
@@ -233,7 +240,7 @@ body #list .pill .pill-content h2 {
   font-size: 1.3em;
 }
 
-body #list .pill .pill-content p {
+body #list .pill .pill-content p, body #car-plates .pill .pill-content p {
   font-family: "Source Sans Pro", sans-serif;
   color: rgba(38, 59, 136, 0.9);
   font-weight: 500;
@@ -243,7 +250,7 @@ body #list .pill .pill-content p {
   letter-spacing: .025em;
 }
 
-body #list .pill .pill-content div {
+body #list .pill .pill-content div, body #car-plates .pill .pill-content div {
   margin-top: .7em;
 }
 

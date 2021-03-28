@@ -120,16 +120,21 @@ body{
         height: 100vh;
         overflow: scroll;
     }
-    #list, #clients, #dashboard, #carplates{
+    #list, #clients, #dashboard, #car-plates{
         margin-top: 5em;
         margin-bottom: 5em;
     }
-    #list{
+    #list, #car-plates{
         transition: 2s ease-in-out;
+        .plates{
+            height: 6.5em;
+        }
+        .lists{
+            height: 9em;
+        }
         .pill{
             cursor: pointer;
             width: 100%;
-            height: 9em;
             @include gradient-bg;
             border-radius: 1.5em;
             margin: 1em 0;
