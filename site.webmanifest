@@ -1,18 +1,18 @@
 {
     "name":"Maceió Lava Jato",
-    "short_name":"MLJ",
-    "icons":
-        [
-            {
-                "src":"/android-chrome-192x192.png",
-                "sizes":"192x192","type":"image/png"
-            },
-            {
-                "src":"/android-chrome-512x512.png",
-                "sizes":"512x512","type":"image/png"
-            }
-        ],
-                "theme_color":"#263C88",
-                "background_color":"#f7f7f7",
-                "display":"standalone"
+    "short_name":"Lavajato",
+    "description": "Aplicativo de gerência Maceió Lava Jato",
+    "theme_color":"#263C88",
+    "background_color":"#f7f7f7",
+    "display":"standalone",
+    "icons":[
+                {
+                    "src":"images/android-chrome-192x192.png",
+                    "sizes":"192x192","type":"image/png"
+                },
+                {
+                    "src":"images/android-chrome-512x512.png",
+                    "sizes":"512x512","type":"image/png"
+                }
+            ]       
 }
