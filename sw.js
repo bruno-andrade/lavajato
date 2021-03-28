@@ -12,7 +12,8 @@ const resourcesToPrecache = [
 '/lavajato/js/chart.js',
 '/lavajato/js/main.js',
 '/lavajato/images/favicon.ico',
-'/lavajato/site.webmanifest'
+'/lavajato/site.webmanifest',
+'/lavajato/images/favicon-144x144.png'
 ];
 
 self.addEventListener('install', (event) => {
