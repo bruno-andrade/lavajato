@@ -1,8 +1,6 @@
 <?php 
 
-class Os{
-    private $date;
-    private $time;    
+class Os{   
     private $service;
     private $price;
     private $paymentMethod;

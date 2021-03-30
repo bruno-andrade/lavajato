@@ -2,7 +2,7 @@
 
 class Connection{
 
-    private $dsn = '';
+    private $dsn = 'mysql:host=localhost;dbname=';
     private $user = '';
     private $pass = '';
 
@@ -22,5 +22,8 @@ class Connection{
         }
     }
 }
+
+$conn = new Connection();
+$conn -> conn();
 
 ?>

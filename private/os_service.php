@@ -14,39 +14,50 @@ class OsService {
 
 
     public function insert(){ 
-        $query = "INSERT INTO tarefas(titulo) VALUES (:tarefa)";
+        $query = "INSERT INTO os (servico, valor, pagamento, cliente_id_cliente) VALUES (:servico,:valor,:pagamento,1)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':tarefa', $this->tarefa->__get('titulo'));
+        $stmt->bindValue(':servico', $this->os->__get('service'));
+        $stmt->bindValue(':valor', $this->os->__get('price'));
+        $stmt->bindValue(':pagamento', $this->os->__get('paymentMethod'));
         $stmt->execute();
-
     }
     public function delete(){ 
-        $query  =  "UPDATE `tarefas` SET `delete` = 0 WHERE `id_tarefas` = :id";
+        $query  =  "DELETE FROM `os` WHERE `id_os` = :id";
         $stmt  = $this->conn->prepare($query);
-        $stmt->bindValue(':id', $this->tarefa->__get('id'));
+        $stmt->bindValue(':id', $this->os->__get('id'));
         $stmt->execute();
     }
     public function select(){
-        $query = 'SELECT * FROM tarefas';
+        $query = 'SELECT * FROM os';
         $stmt  = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $print = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function update($parametro){
-        if ($parametro == 'titulo') {
-            $query  =  "UPDATE `tarefas` SET `titulo` = :titulo WHERE `id_tarefas` = :id";
-            $stmt  = $this->conn->prepare($query);
-            $stmt->bindValue(':titulo', $this->tarefa->__get('titulo'));
-            $stmt->bindValue(':id', $this->tarefa->__get('id'));        
-        }else{
-            $query  =  "UPDATE `tarefas` SET `status` = :status WHERE `id_tarefas` = :id";
-            $stmt  = $this->conn->prepare($query);
-            $stmt->bindValue(':status', $this->tarefa->__get('status'));
-            $stmt->bindValue(':id', $this->tarefa->__get('id'));
-            
-        }
-        $stmt->execute();
-        
+    public function update(){
+		if ($this->os->__get('service')) {
+			$query  =  "UPDATE `os` SET `servico` = :servico WHERE `id_os` = :id";
+			$stmt  = $this->conn->prepare($query);
+			$stmt->bindValue(':servico', $this->os->__get('service'));
+			$stmt->bindValue(':id', $this->os->__get('id'));
+			$stmt->execute(); 
+			//echo "debug service";
+		}
+		if ($this->os->__get('price')) {
+			$query  =  "UPDATE `os` SET `valor` = :valor WHERE `id_os` = :id";
+			$stmt  = $this->conn->prepare($query);
+			$stmt->bindValue(':valor', $this->os->__get('price'));
+			$stmt->bindValue(':id', $this->os->__get('id'));
+			$stmt->execute();   
+			//echo "debug price";
+		}
+		if ($this->os->__get('paymentMethod')) {
+			$query  =  "UPDATE `os` SET `pagamento` = :pagamento WHERE `id_os` = :id";
+			$stmt  = $this->conn->prepare($query);
+			$stmt->bindValue(':pagamento', $this->os->__get('paymentMethod'));
+			$stmt->bindValue(':id', $this->os->__get('id'));
+			$stmt->execute();   
+			//echo "debug payment";
+		}  
     }
 }
 
