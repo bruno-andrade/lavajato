@@ -31,7 +31,18 @@ class OsService {
         $query = 'SELECT * FROM os';
         $stmt  = $this->conn->prepare($query);
         $stmt->execute();
-        $print = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        /*echo $print[1]['id_os'];
+        echo $print[1]['data'];
+        echo $print[1]['hora'];
+        echo $print[1]['servico'];
+        echo $print[1]['valor'];
+        echo $print[1]['pagamento'];
+        echo $print[1]['cliente_id_cliente'];*/
+        
+        
+        
     }
     public function update(){
 		if ($this->os->__get('service')) {

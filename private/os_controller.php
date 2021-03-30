@@ -25,7 +25,42 @@ switch ($opt) {
         $os = new Os();
 		$conn = new Connection();
         $os_service = new OsService($os, $conn);
-        $os_service->select();
+        $retorno = $os_service->select();
+        $print ="<section id='list'>
+                    <div class='container-fluid'>";
+
+        foreach ($retorno as $value) {
+            $print .= "                        
+            <div class='pill lists' data-bs-toggle='modal' data-bs-target='#osModal'>
+                <div class='pill-header'>
+                    <div class='car-plate'><span class='car-plate-span'>MVK-1017</span></div>
+                </div>
+                <div class='pill-content'>
+                    <h2>Bruno Andrade</h2>
+                    <div class='desc'>
+                        <p>Civic - Prata</p>
+                        <p>".$value['servico']."</p>
+                    </div>
+                    <div class='actions'>
+                        <a class='m' href='#'>
+                            <svg class='feather'>
+                                <use xlink:href='images/feather/feather-sprite.svg#message-circle'/>
+                            </svg>
+                        </a>
+                        <a href='#'>
+                            <svg class='feather'>
+                                <use xlink:href='images/feather/feather-sprite.svg#phone'/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>";
+        }
+        $print .= "</div>
+        </section>";
+        echo $print;
+
+
         break;
     case 'delete':
         $os = new Os();

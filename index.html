@@ -37,7 +37,9 @@
         </div>
     </section>
     
-    <section id="main"></section>
+    <section id="main">
+        
+    </section>
 
   <!-- Modal -->
     <div id="os-modal">
@@ -157,7 +159,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" onclick="insert()" class="btn salvar">Salvar</button>
+                        <button type="button" onclick="select()" class="btn salvar">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -176,11 +178,31 @@
 
     <nav class="navbar navbar-expand-sm fixed-bottom">
         <div class="container-fluid">
-            <a id="menu-dashboard" class="nav-link"><i data-feather="bar-chart-2"></i></a>
-            <a id="menu-list" class="nav-link"><i data-feather="list"></i></a>
-            <a class="nav-link" id="osModalButton" href="#" data-bs-toggle="modal" data-bs-target="#osModal"><i data-feather="plus-square"></i></a>
-            <a id="menu-clients" class="nav-link"><i data-feather="users"></i></a>
-            <a id="menu-car-plates" class="nav-link" href="#"><i data-feather="credit-card"></i></a>
+            <a id="menu-dashboard" class="nav-link" href="#">
+                <svg class="feather">
+                    <use xlink:href="images/feather/feather-sprite.svg#bar-chart-2"/>
+                </svg>
+            </a>
+            <a id="menu-list" class="nav-link" href="#">
+                <svg class="feather">
+                    <use xlink:href="images/feather/feather-sprite.svg#list"/>
+                </svg>
+            </a>
+            <a class="nav-link" id="osModalButton" href="#" data-bs-toggle="modal" data-bs-target="#osModal">
+                <svg class="feather">
+                    <use xlink:href="images/feather/feather-sprite.svg#plus-square"/>
+                </svg>
+            </a>
+            <a id="menu-clients" class="nav-link" href="#">
+                <svg class="feather">
+                    <use xlink:href="images/feather/feather-sprite.svg#users"/>
+                </svg>
+            </a>
+            <a id="menu-car-plates" class="nav-link" href="#">
+                <svg class="feather">
+                    <use xlink:href="images/feather/feather-sprite.svg#credit-card"/>
+                </svg>
+            </a>
         </div>
     </nav>
 

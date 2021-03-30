@@ -2,9 +2,9 @@
 
 class Connection{
 
-    private $dsn = 'mysql:host=localhost;dbname=';
-    private $user = '';
-    private $pass = '';
+    private $dsn = 'mysql:host=localhost;dbname=lavajato';
+    private $user = 'bruno';
+    private $pass = '345297';
 
     public function conn() {
         try {

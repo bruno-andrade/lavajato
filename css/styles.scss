@@ -80,18 +80,24 @@ body{
             color: $blue;
             border-radius: 1.4em;
             transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            stroke: $blue;
             &.nav-link{
                 padding: 1em;
                 transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
                 &:active, &:focus, &:hover{
                     background-color: $blue;
-                    color: $offwhite;
                     transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                    stroke: $offwhite;
                 }
             }
             
-            i{
-                font-size: 1.5em;
+            svg{               
+                width: 30px;
+                height: 30px;                
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                fill: none;                  
             }
         }
     }
@@ -198,11 +204,16 @@ body{
                         height: auto;
                         background-color: rgba(22, 35, 80, 0.075);
                         backdrop-filter: blur(15px);
+                        
                         @include shadow1;
-                        .action{
-                            color: #263C88;
-                            height: auto;
-                            position: relative;
+                        svg{
+                            width: 24px;
+                            height: 24px;                
+                            stroke-width: 2;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            fill: none;
+                            stroke: $blue;
                         }
                         &.m{
                             margin-left: .5em;

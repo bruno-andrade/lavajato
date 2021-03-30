@@ -5,11 +5,11 @@ $(document).ready(function(){
             $("#main").load("contacts.html"); 
         });
     })
-    $("#menu-list").click(function(){
+    /*$("#menu-list").click(function(){
         $(function(){
             $("#main").load("list.html"); 
         });
-    })
+    })*/
     $("#menu-dashboard").click(function(){
         $(function(){
             $("#main").load("dashboard.html"); 
@@ -20,12 +20,12 @@ $(document).ready(function(){
             $("#main").load("carplates.html"); 
         });
     })
+    select();
 });
 
 //LOADING SCREEN
 $(window).on('load', function() {
-    $('#loading-screen').remove();
-    $("#main").load("list.html");            
+    $('#loading-screen').remove();        
 });
 
 //"Function" para abrir o "Modal" da tela "List" para edição da OS
@@ -46,3 +46,15 @@ function insert() {
     xhttp.send();
 }
 
+function select() {
+    let xhttp = new XMLHttpRequest();
+    url = "os_controller.php?opt=select";
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("main").innerHTML = xhttp.responseText;
+            console.log(xhttp.responseText);         
+        }                    
+    };                
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}

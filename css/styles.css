@@ -68,6 +68,7 @@ body nav a {
   border-radius: 1.4em;
   -webkit-transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
   transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  stroke: #263C88;
 }
 
 body nav a.nav-link {
@@ -78,13 +79,18 @@ body nav a.nav-link {
 
 body nav a.nav-link:active, body nav a.nav-link:focus, body nav a.nav-link:hover {
   background-color: #263C88;
-  color: #f7f7f7;
   -webkit-transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
   transition: 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  stroke: #f7f7f7;
 }
 
-body nav a i {
-  font-size: 1.5em;
+body nav a svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 body #header {
@@ -214,10 +220,14 @@ body #list .pill .pill-content .actions a, body #car-plates .pill .pill-content 
           box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-body #list .pill .pill-content .actions a .action, body #car-plates .pill .pill-content .actions a .action {
-  color: #263C88;
-  height: auto;
-  position: relative;
+body #list .pill .pill-content .actions a svg, body #car-plates .pill .pill-content .actions a svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke: #263C88;
 }
 
 body #list .pill .pill-content .actions a.m, body #car-plates .pill .pill-content .actions a.m {
