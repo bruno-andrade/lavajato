@@ -3,8 +3,8 @@
 class Connection{
 
     private $dsn = 'mysql:host=localhost;dbname=lavajato';
-    private $user = 'bruno';
-    private $pass = '345297';
+    private $user = '';
+    private $pass = '';
 
     public function conn() {
         try {
