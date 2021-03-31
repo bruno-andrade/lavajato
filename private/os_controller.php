@@ -26,20 +26,23 @@ switch ($opt) {
 		$conn = new Connection();
         $os_service = new OsService($os, $conn);
         $retorno = $os_service->select();
+        //echo "<pre>";
+        //print_r($retorno);
+        //echo "</pre>";
         $print ="<section id='list'>
                     <div class='container-fluid'>";
 
-        foreach ($retorno as $value) {
+        foreach (array_reverse($retorno) as $value) {
             $print .= "                        
-            <div class='pill lists' data-bs-toggle='modal' data-bs-target='#osModal'>
+            <div id='".$value['id_os']."' class='pill lists'>
                 <div class='pill-header'>
-                    <div class='car-plate'><span class='car-plate-span'>MVK-1017</span></div>
+                    <div class='car-plate'><span id='placa".$value['id_os']."' class='car-plate-span'>".$value['placa']."</span></div>
                 </div>
                 <div class='pill-content'>
-                    <h2>Bruno Andrade</h2>
+                    <h2 id='nome".$value['id_os']."'>".$value['nome']."</h2>
                     <div class='desc'>
-                        <p>Civic - Prata</p>
-                        <p>".$value['servico']."</p>
+                        <p id='veiculo".$value['id_os']."'>".$value['veiculo']." - ".$value['cor']."</p>
+                        <p id='servico".$value['id_os']."'>".$value['servico']."</p>
                     </div>
                     <div class='actions'>
                         <a class='m' href='#'>
@@ -77,7 +80,14 @@ switch ($opt) {
         isset($id)              ? $os->__set('id', $id)                       :null;
         $conn = new Connection();
         $os_service = new OsService($os, $conn);
-        $os_service->update();
+        $retorno = $os_service->update();
+
+
+
+        
+
+
+
         break;
     default:
         # code...

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>  
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var dt = new Date();
+        var months = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+        var date = dt.getDay() + " de " + months[dt.getMonth()] + " de " + dt.getFullYear();
+        var time;
+        if (dt.getHours() < 10) {
+            time = "0" + dt.getHours();   
+        }else{
+            time = dt.getHours();
+        }
+        if (dt.getMinutes() < 10) {
+            time += ":0" + dt.getMinutes();
+        }else{
+            time += ":" + dt.getMinutes(); 
+        }
+        document.write(time);
+        document.write('<br>');
+        document.write(date);
+        
+    </script>
+</body>
+</html>
