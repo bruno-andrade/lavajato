@@ -14,12 +14,13 @@ class OsService {
 
 
     public function insert(){ 
-        $query = "INSERT INTO os (servico, valor, pagamento, cliente_id_cliente) VALUES (:servico,:valor,:pagamento,:cliente)";
+        $query = "INSERT INTO os (servico, valor, pagamento, cliente_id_cliente, placa_id_placa) VALUES (:servico,:valor,:pagamento,:cliente, :placa)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':servico', $this->os->__get('service'));
         $stmt->bindValue(':valor', $this->os->__get('price'));
         $stmt->bindValue(':pagamento', $this->os->__get('paymentMethod'));
         $stmt->bindValue(':cliente', 1);
+        $stmt->bindValue(':placa', 1);
         $stmt->execute();
     }
     public function delete(){ 
@@ -29,9 +30,11 @@ class OsService {
         $stmt->execute();
     }
     public function select(){
-        $query = 'SELECT  o.id_os, o.data, o.hora, o.servico, o.valor, o.pagamento, c.nome, c.telefone, p.placa, p.veiculo, p.cor  FROM os AS o INNER JOIN cliente AS c ON o.cliente_id_cliente = c.id_cliente
-        INNER JOIN placa_has_cliente AS h ON c.id_cliente = h.cliente_id_cliente
-        INNER JOIN placa AS p ON h.placa_id_placa = p.id_placa';
+        $query = 'SELECT o.id_os, p.placa, c.nome, c.telefone, p.veiculo, p.cor, o.servico, o.valor, o.pagamento  
+        FROM os AS o, cliente AS c, placa AS p
+        WHERE o.cliente_id_cliente = c.id_cliente AND
+        o.placa_id_placa = p.id_placa
+        ORDER BY id_os';
         $stmt  = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);        

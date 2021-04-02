@@ -56,25 +56,39 @@ $(document).ready(function(){
             veiculo   = veiculo.replace(' - ', '/');
             let index = veiculo.indexOf('/');
             let cor   = veiculo.slice(index + 1);
-            veiculo   = veiculo.slice(0 ,index);
+            veiculo   = veiculo.slice(0, index);
+
+            let length = servico.length;
+            let virgula = servico.indexOf(',');
+            //SEPARAR OS SERVIÇOS EM UM ARRAY
+
+            array.forEach(element => {
+                index     = servico.indexOf(',');
+                let teste = servico.slice(0, index);
+                console.log(teste);
+            });
+            
+
                 //SEPARANDO O DDD DO NÚMERO
             let ddd   = telefone.slice(0, 2);
             telefone  = telefone.slice(2);
                 //AJUSTANDO ID
             servico   = servico.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            //console.log(servico)
             pagamento = pagamento.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
             
             
             //COLOCA OS VALORES DENTRO DOS CAMPOS DO MODAL PARA EDIÇÃO
-            document.getElementById('placa').value = placa;
-            document.getElementById('nome').value = nome;
-            document.getElementById('veiculo').value = veiculo;
-            document.getElementById('cor').value = cor;
-            document.getElementById(servico).checked = true;
-            document.getElementById('telefone').value = telefone; 
-            document.getElementById('ddd').value = ddd; 
-            document.getElementById('valor').value = valor;              
-            document.getElementById(pagamento).checked = true; 
+            document.getElementById('placa').value      = placa;
+            document.getElementById('nome').value       = nome;
+            document.getElementById('veiculo').value    = veiculo;
+            document.getElementById('cor').value        = cor;
+            document.getElementById(servico).checked    = true;
+            document.getElementById('telefone').value   = telefone; 
+            document.getElementById('ddd').value        = ddd; 
+            document.getElementById('valor').value      = valor;              
+            document.getElementById(pagamento).checked  = true; 
             
             $('#cancelar').click( function(){
                 document.getElementById(servico).checked = false;
@@ -90,27 +104,32 @@ $(window).on('load', function() {
     $('#loading-screen').remove();        
 });
 
+
 //FUNÇÕES 'CRUD' ASSINCRONAS
 // NOTE TO SELF: CRIAR 3 INSERTS DIFERENTES QUE RETORNAM O ID DOS DADOS INSERIDOS POR MEIO DO XHTTP.RESPONSETEXT
 function insert() {
     let x = document.querySelectorAll('[name=serviceOption]:checked');
-    let servico;
+    let servico = "";
     x.forEach(element => {
-        servico += $(element).attr('id') + ",";
+        servico += $(element).attr('value') + ",";
+        console.log(servico);
     });
     
-    let z = document.querySelectorAll('[name=paymentOption]:checked'); 
+    let z               = document.querySelectorAll('[name=paymentOption]:checked'); 
 
-    let plate = document.getElementById('placa').value;
-    let name = document.getElementById('nome').value;
-    let vehicle = document.getElementById('veiculo').value;
-    let color = document.getElementById('cor').value;
-    let telefone = document.getElementById('telefone').value; 
-    let ddd = document.getElementById('ddd').value; 
-    let price = document.getElementById('valor').value;
-    let paymentMethod = $(z[0]).attr('id');
-    service = servico.slice(0, -1);
-    let phone = `${ddd}${telefone}`;          
+    let plate           = document.getElementById('placa').value;
+    let name            = document.getElementById('nome').value;
+    let vehicle         = document.getElementById('veiculo').value;
+    let color           = document.getElementById('cor').value;
+    let telefone        = document.getElementById('telefone').value; 
+    let ddd             = document.getElementById('ddd').value; 
+    let price           = document.getElementById('valor').value;
+    let paymentMethod   = $(z[0]).attr('id');
+    service             = servico.slice(0, -1);
+    let phone           = `${ddd}${telefone}`;         
+    
+    //let arrayIds = [plate, name, vehicle, color, phone, service, price, paymentMethod];
+    //console.log(arrayIds);
     
     url = "os_controller.php?opt=insert&plate="+plate+"&name="+name+"&vehicle="+vehicle+"&color="+color+"&phone="+phone+"&price="+price+"&paymentMethod="+paymentMethod+"&service="+service;
     var xhttp = new XMLHttpRequest();
@@ -151,9 +170,9 @@ function deletar(id) {
 
 //FUNÇÃO PRA OBTER HORA E DATA
 function datetime() {
-    var dt = new Date();
-    var months = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
-    var date = dt.getDay() + " de " + months[dt.getMonth()] + " de " + dt.getFullYear();
+    var dt      = new Date();
+    var months  = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+    var date    = dt.getDay() + " de " + months[dt.getMonth()] + " de " + dt.getFullYear();
     var time;
     if (dt.getHours() < 10) {
         time = "0" + dt.getHours();   

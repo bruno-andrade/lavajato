@@ -26,9 +26,6 @@ switch ($opt) {
 		$conn = new Connection();
         $os_service = new OsService($os, $conn);
         $retorno = $os_service->select();
-        //echo "<pre>";
-        //print_r($retorno);
-        //echo "</pre>";
         $print ="<section id='list'>
                     <div class='container-fluid'>";
 
