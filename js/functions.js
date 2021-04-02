@@ -49,7 +49,11 @@ $(document).ready(function(){
             let servico   = document.getElementById('service'+elmId).innerHTML; 
             let telefone  = document.getElementById('phone'+elmId).innerHTML; 
             let valor     = document.getElementById('price'+elmId).innerHTML; 
-            let pagamento = document.getElementById('paymentMethod'+elmId).innerHTML; 
+            let pagamento = document.getElementById('paymentMethod'+elmId).innerHTML;
+            
+            //AJUSTANDO ID
+            servico   = servico.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            pagamento = pagamento.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
     
             //MANIPULANDO STRINGS
                 //SEPARANDO O VEICULO DA COR
@@ -57,41 +61,28 @@ $(document).ready(function(){
             let index = veiculo.indexOf('/');
             let cor   = veiculo.slice(index + 1);
             veiculo   = veiculo.slice(0, index);
-
-            let length = servico.length;
-            let virgula = servico.indexOf(',');
-            //SEPARAR OS SERVIÇOS EM UM ARRAY
-
-            array.forEach(element => {
-                index     = servico.indexOf(',');
-                let teste = servico.slice(0, index);
-                console.log(teste);
-            });
-            
+                //SEPARANDO OS SERVICOS EM UM ARRAY
+            let arrayServico = servico.split(",");   
 
                 //SEPARANDO O DDD DO NÚMERO
             let ddd   = telefone.slice(0, 2);
-            telefone  = telefone.slice(2);
-                //AJUSTANDO ID
-            servico   = servico.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            //console.log(servico)
-            pagamento = pagamento.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-            
+            telefone  = telefone.slice(2);            
             
             //COLOCA OS VALORES DENTRO DOS CAMPOS DO MODAL PARA EDIÇÃO
             document.getElementById('placa').value      = placa;
             document.getElementById('nome').value       = nome;
             document.getElementById('veiculo').value    = veiculo;
             document.getElementById('cor').value        = cor;
-            document.getElementById(servico).checked    = true;
             document.getElementById('telefone').value   = telefone; 
             document.getElementById('ddd').value        = ddd; 
             document.getElementById('valor').value      = valor;              
-            document.getElementById(pagamento).checked  = true; 
+            document.getElementById(pagamento).checked  = true;
+            arrayServico.forEach(element => {
+                document.getElementById(element).checked= true; 
+            });
             
             $('#cancelar').click( function(){
-                document.getElementById(servico).checked = false;
+                document.getElementById(servico).checked= false;
             });
         });   
     
