@@ -33,16 +33,20 @@ switch ($opt) {
                     <div class='container-fluid'>";
 
         foreach (array_reverse($retorno) as $value) {
-            $print .= "                        
-            <div id='".$value['id_os']."' class='pill lists'>
+            $print .= "    
+            <span id='".$value['id_os']."' class='layer'>                   
+            <div class='pill lists'>            
                 <div class='pill-header'>
-                    <div class='car-plate'><span id='placa".$value['id_os']."' class='car-plate-span'>".$value['placa']."</span></div>
+                    <div class='car-plate'><span id='plate".$value['id_os']."' class='car-plate-span'>".$value['placa']."</span></div>
                 </div>
                 <div class='pill-content'>
-                    <h2 id='nome".$value['id_os']."'>".$value['nome']."</h2>
+                    <div id='phone".$value['id_os']."' class='d-none'>".$value['telefone']."</div>
+                    <div id='price".$value['id_os']."' class='d-none'>".$value['valor']."</div>
+                    <div id='paymentMethod".$value['id_os']."' class='d-none'>".$value['pagamento']."</div>
+                    <h2 id='name".$value['id_os']."'>".$value['nome']."</h2>
                     <div class='desc'>
-                        <p id='veiculo".$value['id_os']."'>".$value['veiculo']." - ".$value['cor']."</p>
-                        <p id='servico".$value['id_os']."'>".$value['servico']."</p>
+                        <p id='vehicle".$value['id_os']."'>".$value['veiculo']." - ".$value['cor']."</p>
+                        <p id='service".$value['id_os']."'>".$value['servico']."</p>
                     </div>
                     <div class='actions'>
                         <a class='m' href='#'>
@@ -57,7 +61,7 @@ switch ($opt) {
                         </a>
                     </div>
                 </div>
-            </div>";
+            </div></span>";
         }
         $print .= "</div>
         </section>";

@@ -16,7 +16,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="js/functions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <!-- Favicon/Manifest -->
@@ -41,9 +40,9 @@
         
     </section>
 
-  <!-- Modal -->
+<!-- Modal -->
     <div id="os-modal">
-        <div class="modal fade" id="osModal" tabindex="-1" aria-labelledby="osModalLabel" aria-hidden="true">
+        <div class="modal fade" id="osModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -51,36 +50,36 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        
-                            <div class="datetime">
-                                <label for="date" id="date" class="date"></label>
-                                <label for="time" id="time" class="time"></label>
-                            </div>
-                            <div class="os-form">
+                        <div class="datetime">
+                            <label for="date" id="date" class="date"></label>
+                            <label for="time" id="time" class="time"></label>
+                        </div>
+                        <div class="os-form">
+                            
                                 <div class="os-form-block" id="plate">
                                     <label for="placa" class="os-form-label">Placa</label>
-                                    <input class="os-form-control" type="text" placeholder="Ex: MVK1017" aria-label="default input example" maxlength="7" minlength="7">
+                                    <input class="os-form-control" id="placa" type="text" placeholder="Ex: MVK1017" aria-label="default input example" maxlength="7" minlength="7">
                                 </div>
                                 <div class="os-form-block" id="car">
                                     <label for="car" class="os-form-label">Carro</label>
-                                    <input class="os-form-control" type="text" placeholder="Ex: Civic" aria-label="default input example">
+                                    <input class="os-form-control" id="veiculo" type="text" placeholder="Ex: Civic" aria-label="default input example">
                                 </div>
                                 <div class="os-form-block" id="color">
                                     <label for="color" class="os-form-label">Cor</label>
-                                    <input class="os-form-control" type="text" placeholder="Ex: Branco" aria-label="default input">
+                                    <input class="os-form-control" id="cor" type="text" placeholder="Ex: Branco" aria-label="default input">
                                 </div>
                                 <div class="os-form-block" id="client">
                                     <label for="client" class="os-form-label">Cliente</label>
-                                    <input class="os-form-control" type="text" placeholder="Bruno Andrade" aria-label="default input">
+                                    <input class="os-form-control" id="nome" type="text" placeholder="Bruno Andrade" aria-label="default input">
                                 </div>
                                 <div class="os-form-block" id="phone">
                                     <label for="phone" class="os-form-label">Telefone</label>
                                     <div class="row">
                                         <div class="col-3">
-                                            <input class="os-form-control" type="number" placeholder="82" value="82" maxlength="2">
+                                            <input class="os-form-control" id="ddd" type="number" placeholder="82" value="82" maxlength="2">
                                         </div>
                                         <div class="col-9">
-                                            <input class="os-form-control" type="number" placeholder="Ex: 999870720" aria-label="default input example" maxlength="9">
+                                            <input class="os-form-control" id="telefone" type="tel" placeholder="Ex: 999870720" aria-label="default input example" maxlength="9">
                                         </div>
                                     </div>
                                 </div>
@@ -89,84 +88,83 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col">
-                                                <input type="checkbox" class="btn-check" name="options" id="service1" autocomplete="off">
-                                                <label class="btn check" for="service1">Simples</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="simples" autocomplete="off">
+                                                <label class="btn check" for="simples">Simples</label>
                                             </div>
                                             <div class="col mx-2">
-                                                <input type="checkbox" class="btn-check" name="options" id="service2" autocomplete="off">
-                                                <label class="btn check" for="service2">Completa</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="completa" autocomplete="off">
+                                                <label class="btn check" for="completa">Completa</label>
                                             </div>
                                             <div class="col">
-                                                <input type="checkbox" class="btn-check" name="options" id="service3" autocomplete="off">
-                                                <label class="btn check" for="service3">Rápida</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="rapida" autocomplete="off">
+                                                <label class="btn check" for="rapida">Rápida</label>
                                             </div>
                                         </div>
                                         <div class="row my-2">
                                             <div class="col">
-                                                <input type="checkbox" class="btn-check" name="options" id="service4" autocomplete="off">
-                                                <label class="btn check" for="service4">Motor</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="motor" autocomplete="off">
+                                                <label class="btn check" for="motor">Motor</label>
                                             </div>
                                             <div class="col mx-2">
-                                                <input type="checkbox" class="btn-check" name="options" id="service5" autocomplete="off">
-                                                <label class="btn check" for="service5">Aspiração</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="aspiracao" autocomplete="off">
+                                                <label class="btn check" for="aspiracao">Aspiração</label>
                                             </div>
                                             <div class="col">
-                                                <input type="checkbox" class="btn-check" name="options" id="service6" autocomplete="off">
-                                                <label class="btn check" for="service6">Bancos</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="bancos" autocomplete="off">
+                                                <label class="btn check" for="bancos">Bancos</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="checkbox" class="btn-check" name="options" id="service7" autocomplete="off">
-                                                <label class="btn check" for="service7">Espelhos</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="espelhos" autocomplete="off">
+                                                <label class="btn check" for="espelhos">Espelhos</label>
                                             </div>
                                             <div class="col mx-2">
-                                                <input type="checkbox" class="btn-check" name="options" id="service8" autocomplete="off">
-                                                <label class="btn check" for="service8">Teto</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="teto" autocomplete="off">
+                                                <label class="btn check" for="teto">Teto</label>
                                             </div>
                                             <div class="col">
-                                                <input type="checkbox" class="btn-check" name="options" id="service9" autocomplete="off">
-                                                <label class="btn check" for="service9">Tapete</label>
+                                                <input type="checkbox" class="btn-check" name="serviceOption" id="tapete" autocomplete="off">
+                                                <label class="btn check" for="tapete">Tapete</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="os-form-block" id="price">
                                     <label for="price" class="os-form-label">Preço</label>
-                                    <input class="os-form-control" type="number" step="5">
+                                    <input class="os-form-control" id="valor" type="number" step="5">
                                 </div>
                                 <div class="os-form-block" id="payment">
                                     <label for="payment" class="os-form-label">Método de Pagamento</label>
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col">
-                                                <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
-                                                <label class="btn check" for="option1">Dinheiro</label>
+                                                <input type="radio" class="btn-check" name="paymentOption" id="dinheiro" autocomplete="off">
+                                                <label class="btn check" for="dinheiro">Dinheiro</label>
                                             </div>
                                             <div class="col mx-2">
-                                                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                                                <label class="btn check" for="option2">Débito</label>
+                                                <input type="radio" class="btn-check" name="paymentOption" id="debito" autocomplete="off">
+                                                <label class="btn check" for="debito">Débito</label>
                                             </div>
                                             <div class="col">
-                                                <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                                                <label class="btn check" for="option3">Crédito</label>
+                                                <input type="radio" class="btn-check" name="paymentOption" id="credito" autocomplete="off">
+                                                <label class="btn check" for="credito">Crédito</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        
+                            
+                        </div>                        
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" onclick="" class="btn salvar">Salvar</button>
+                        <button type="button" id="cancelar" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" onclick="insert()" class="btn salvar">Salvar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-           
-
+    </div>           
+<!-- Loading Screen -->
     <div id="loading-screen">
         <div class="center">
             <span></span>
@@ -175,7 +173,7 @@
             <span></span>
         </div>
     </div>
-
+<!-- Nav Bar -->
     <nav class="navbar navbar-expand-sm fixed-bottom">
         <div class="container-fluid">
             <a id="menu-dashboard" class="nav-link" href="#">
@@ -188,7 +186,7 @@
                     <use xlink:href="images/feather/feather-sprite.svg#list"/>
                 </svg>
             </a>
-            <a class="nav-link" id="osModalButton" href="#" data-bs-toggle="modal" data-bs-target="#osModal">
+            <a class="nav-link" id="osModalButton" href="#">
                 <svg class="feather">
                     <use xlink:href="images/feather/feather-sprite.svg#plus-square"/>
                 </svg>
@@ -208,16 +206,9 @@
 
     <script>
         feather.replace({ 'width': 30, 'height': 30 });
-        
-        // MODAL DE NOVA OS
-        var osModal = document.getElementById('osModal');
-        var osModalButton = document.getElementById('osModalButton');
-        osModal.addEventListener('shown.bs.modal', function () {
-            osModalButton.focus();
-        });
-
     </script>    
     <script src="sw.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/functions.js"></script>
 </body>
 </html>
