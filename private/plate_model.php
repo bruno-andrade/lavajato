@@ -2,7 +2,7 @@
 
 class Plate{
     private $plate;
-    private $vehicleName;
+    private $vehicle;
     private $color;    
     private $id;
 

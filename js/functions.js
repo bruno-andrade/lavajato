@@ -1,28 +1,20 @@
 $(document).ready(function(){
+    //INICIA A LISTA DE OS's
+    select('os');
+
     // FUNÇÕES DO MENU
     $("#menu-clients").click(function(){
-        $(function(){
-            $("#main").load("contacts.html"); 
-        });
+        select('owner');
     });
     $("#menu-list").click(function(){
-        $(function(){
-            $("#main").load("list.html"); 
-        });
-    });
-    $("#menu-dashboard").click(function(){
-        $(function(){
-            $("#main").load("dashboard.html"); 
-        });
+        select('os');
     });
     $("#menu-car-plates").click(function(){
-        $(function(){
-            $("#main").load("carplates.html"); 
-        });
+        select('plate');
     });
-
-    //INICIA A LISTA DE OS's
-    select();
+    $("#menu-dashboard").click(function(){
+        $("#main").load("dashboard.html"); 
+    });    
 
     // CRIA O MODAL DE NOVA OS
     var osModal = new bootstrap.Modal(document.getElementById('osModal'));
@@ -33,68 +25,66 @@ $(document).ready(function(){
 
     //EDIÇÃO DA OS
     $(document).on('click','.layer', function(){
-            //INICIANDO MODAL, DATA E HORA
-            datetime();
+        //INICIANDO MODAL, DATA E HORA
+        datetime();
 
-            //PEGA O ID DO ELEMENTO CLICADO
-            var elmId = $(this).attr('id');
+        //PEGA O ID DO ELEMENTO CLICADO
+        var elmId = $(this).attr('id');
 
-            var editModal = new bootstrap.Modal(document.getElementById('osModal'));
-            editModal.show();                         
-    
-            //GUARDA OS VALORES QUE VÃO SER EDITADOS
-            let placa     = document.getElementById('plate'+elmId).innerHTML; 
-            let nome      = document.getElementById('name'+elmId).innerHTML; 
-            let veiculo   = document.getElementById('vehicle'+elmId).innerHTML; 
-            let servico   = document.getElementById('service'+elmId).innerHTML; 
-            let telefone  = document.getElementById('phone'+elmId).innerHTML; 
-            let valor     = document.getElementById('price'+elmId).innerHTML; 
-            let pagamento = document.getElementById('paymentMethod'+elmId).innerHTML;
-            
-            //AJUSTANDO ID
-            servico   = servico.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            pagamento = pagamento.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    
-            //MANIPULANDO STRINGS
-                //SEPARANDO O VEICULO DA COR
-            veiculo   = veiculo.replace(' - ', '/');
-            let index = veiculo.indexOf('/');
-            let cor   = veiculo.slice(index + 1);
-            veiculo   = veiculo.slice(0, index);
-                //SEPARANDO OS SERVICOS EM UM ARRAY
-            let arrayServico = servico.split(",");   
+        var editModal = new bootstrap.Modal(document.getElementById('osModal'));
+        editModal.show();                         
 
-                //SEPARANDO O DDD DO NÚMERO
-            let ddd   = telefone.slice(0, 2);
-            telefone  = telefone.slice(2);            
-            
-            //COLOCA OS VALORES DENTRO DOS CAMPOS DO MODAL PARA EDIÇÃO
-            document.getElementById('placa').value      = placa;
-            document.getElementById('nome').value       = nome;
-            document.getElementById('veiculo').value    = veiculo;
-            document.getElementById('cor').value        = cor;
-            document.getElementById('telefone').value   = telefone; 
-            document.getElementById('ddd').value        = ddd; 
-            document.getElementById('valor').value      = valor;              
-            document.getElementById(pagamento).checked  = true;
+        //GUARDA OS VALORES QUE VÃO SER EDITADOS
+        let placa     = document.getElementById('plate'+elmId).innerHTML; 
+        let nome      = document.getElementById('name'+elmId).innerHTML; 
+        let veiculo   = document.getElementById('vehicle'+elmId).innerHTML; 
+        let servico   = document.getElementById('service'+elmId).innerHTML; 
+        let telefone  = document.getElementById('phone'+elmId).innerHTML; 
+        let valor     = document.getElementById('price'+elmId).innerHTML; 
+        let pagamento = document.getElementById('paymentMethod'+elmId).innerHTML;
+        
+        //AJUSTANDO ID
+        servico   = servico.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        pagamento = pagamento.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+        //MANIPULANDO STRINGS
+            //SEPARANDO O VEICULO DA COR
+        veiculo   = veiculo.replace(' - ', '/');
+        let index = veiculo.indexOf('/');
+        let cor   = veiculo.slice(index + 1);
+        veiculo   = veiculo.slice(0, index);
+            //SEPARANDO OS SERVICOS EM UM ARRAY
+        let arrayServico = servico.split(",");   
+
+            //SEPARANDO O DDD DO NÚMERO
+        let ddd   = telefone.slice(0, 2);
+        telefone  = telefone.slice(2);            
+        
+        //COLOCA OS VALORES DENTRO DOS CAMPOS DO MODAL PARA EDIÇÃO
+        document.getElementById('placa').value      = placa;
+        document.getElementById('nome').value       = nome;
+        document.getElementById('veiculo').value    = veiculo;
+        document.getElementById('cor').value        = cor;
+        document.getElementById('telefone').value   = telefone; 
+        document.getElementById('ddd').value        = ddd; 
+        document.getElementById('valor').value      = valor;              
+        document.getElementById(pagamento).checked  = true;
+        arrayServico.forEach(element => {
+            document.getElementById(element).checked= true; 
+        });
+
+        $('#cancelar').click( function(){
             arrayServico.forEach(element => {
-                document.getElementById(element).checked= true; 
+                document.getElementById(element).checked= false; 
             });
-            
-            $('#cancelar').click( function(){
-                document.getElementById(servico).checked= false;
-            });
-        });   
-    
+        });
+    });
 });
-
-    
 
 //LOADING SCREEN
 $(window).on('load', function() {
     $('#loading-screen').remove();        
 });
-
 
 //FUNÇÕES 'CRUD' ASSINCRONAS
 // NOTE TO SELF: CRIAR 3 INSERTS DIFERENTES QUE RETORNAM O ID DOS DADOS INSERIDOS POR MEIO DO XHTTP.RESPONSETEXT
@@ -133,12 +123,24 @@ function insert() {
     xhttp.send();
 }
 
-function select() {
+function select(params) {
     let xhttp = new XMLHttpRequest();
-    url = "os_controller.php?opt=select";
+    url = params+"_controller.php?opt=select";
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("main").innerHTML = xhttp.responseText;       
+        }                    
+    };                
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
+
+function update(page,id, param1, param2, param3) {
+    let xhttp = new XMLHttpRequest();
+    url = page+"_controller.php?opt=update&id="+id+"&param1="+param1+"&param2="+param2+"param3="+param3;    
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            select(page);     
         }                    
     };                
     xhttp.open("GET", url, true);
@@ -150,7 +152,7 @@ function deletar(id) {
     url = "os_controller.php?opt=delete&id="+id;
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            select();         
+            select('os');         
         }                    
     };                
     xhttp.open("GET", url, true);

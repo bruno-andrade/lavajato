@@ -1,6 +1,6 @@
 <?php 
 
-class Os{
+class Owner{
 
     private $name;
     private $phone;    

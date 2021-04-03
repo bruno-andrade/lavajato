@@ -4,12 +4,11 @@
 	require "os_service.php";
 	require "connection.php";
 
-
-	isset($_GET['opt'])           ? $opt            = $_GET['opt']          : null;
-    isset($_GET['id'])            ? $id             = $_GET['id']           : null;
-    isset($_GET['service'])       ? $service        = $_GET['service']      : null;
-    isset($_GET['price'])         ? $price          = $_GET['price']        : null;
-    isset($_GET['paymentMethod']) ? $paymentMethod  = $_GET['paymentMethod']: null;
+	isset($_GET['opt'])     ? $opt          = $_GET['opt']    : null;
+    isset($_GET['id'])      ? $id           = $_GET['id']     : null;
+    isset($_GET['param1'])  ? $service      = $_GET['param1'] : null;
+    isset($_GET['param2'])  ? $price        = $_GET['param2'] : null;
+    isset($_GET['param3'])  ? $paymentMethod= $_GET['param3'] : null;
 
 switch ($opt) {
     case 'insert':
