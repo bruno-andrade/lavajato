@@ -16,11 +16,21 @@ $(document).ready(function(){
         $("#main").load("dashboard.html"); 
     });    
 
-    // CRIA O MODAL DE NOVA OS
-    var osModal = new bootstrap.Modal(document.getElementById('osModal'));
+    // CRIA O MODAL DE NOVA OS    
     $(document).on('click','#osModalButton', function(){
+        let osModal = new bootstrap.Modal(document.getElementById('osModal'));
         datetime();
         osModal.show();
+        $('.close').click( function(){
+            $('input[name="serviceOption"]').each( function () {
+                this.checked = false;
+            });
+            $('input[name="paymentOption"]').each( function () {
+                this.checked = false;
+            });
+            limparCampos();
+            osModal.hide();
+        }); 
     });
 
     //EDIÇÃO DA OS
@@ -31,8 +41,8 @@ $(document).ready(function(){
         //PEGA O ID DO ELEMENTO CLICADO
         var elmId = $(this).attr('id');
 
-        var editModal = new bootstrap.Modal(document.getElementById('osModal'));
-        editModal.show();                         
+        let osModal = new bootstrap.Modal(document.getElementById('osModal'));
+        osModal.show();                         
 
         //GUARDA OS VALORES QUE VÃO SER EDITADOS
         let placa     = document.getElementById('plate'+elmId).innerHTML; 
@@ -72,12 +82,10 @@ $(document).ready(function(){
         arrayServico.forEach(element => {
             document.getElementById(element).checked= true; 
         });
-
-        $('#cancelar').click( function(){
-            arrayServico.forEach(element => {
-                document.getElementById(element).checked= false; 
-            });
-        });
+        $('.close').click( function(){
+            limparCampos(arrayServico, pagamento);
+            osModal.hide();
+        }); 
     });
 });
 
@@ -85,6 +93,24 @@ $(document).ready(function(){
 $(window).on('load', function() {
     $('#loading-screen').remove();        
 });
+
+function limparCampos(arrayServico, pagamento) {
+    if (arrayServico) {
+        arrayServico.forEach(element => {
+            document.getElementById(element).checked = false; 
+        });
+    }
+    if (pagamento) {
+        document.getElementById(pagamento).checked  = false;
+    }
+    document.getElementById('placa').value      = "";
+    document.getElementById('nome').value       = "";
+    document.getElementById('veiculo').value    = "";
+    document.getElementById('cor').value        = "";
+    document.getElementById('telefone').value   = ""; 
+    document.getElementById('ddd').value        = 82; 
+    document.getElementById('valor').value      = "";
+}
 
 //FUNÇÕES 'CRUD' ASSINCRONAS
 // NOTE TO SELF: CRIAR 3 INSERTS DIFERENTES QUE RETORNAM O ID DOS DADOS INSERIDOS POR MEIO DO XHTTP.RESPONSETEXT
@@ -166,7 +192,7 @@ function deletar(id) {
 
 
 
-function cadastroMultiplo() {
+function novaOS() {
 
     //PEGA TODOS OS SERVIÇOS SELECIONADOS E ARMAZENA NUM ARRAY
     let x = document.querySelectorAll('[name=serviceOption]:checked');
@@ -193,13 +219,13 @@ function cadastroMultiplo() {
     let url1 = "owner_controller.php?opt=insert";
     let url2 = "plate_controller.php?opt=insert";
     let url3 = "os_controller.php?opt=insert";
-    let url3 = "nm_controller.php?opt=insert";
+    let url4 = "nm_controller.php?opt=insert";
 
     
     $.get( url1, { param1: name, param2: phone } ).done(function (response1) {
         $.get( url2, { param1: plate, param2: vehicle, param3: color } ).done(function (response2) {
             $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: response1, param5: response2} );
-            $.get( url4, { param1: response1, param2: response2 } );
+            //$.get( url4, { param1: response1, param2: response2 } );
         });
     });
     
