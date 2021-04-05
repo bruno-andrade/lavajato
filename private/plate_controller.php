@@ -8,18 +8,20 @@
 	isset($_GET['opt'])     ? $opt     = $_GET['opt']    : null;
     isset($_GET['id'])      ? $id      = $_GET['id']     : null;
     isset($_GET['param1'])  ? $plate   = $_GET['param1'] : null;
-    isset($_GET['param2'])  ? $color   = $_GET['param2'] : null;
-    isset($_GET['param3'])  ? $vehicle = $_GET['param3'] : null;
+    isset($_GET['param2'])  ? $vehicle = $_GET['param2'] : null;
+    isset($_GET['param3'])  ? $color   = $_GET['param3'] : null;
+    
 
 switch ($opt) {
     case 'insert':
         $plateObj = new Plate();        
         isset($plate)     ? $plateObj->__set('plate', $plate)     :null;
-        isset($color)     ? $plateObj->__set('color', $color)     :null;
         isset($vehicle)   ? $plateObj->__set('vehicle', $vehicle) :null;
+        isset($color)     ? $plateObj->__set('color', $color)     :null;
         $conn = new Connection();
         $plate_service = new PlateService($plateObj, $conn);
-        $plate_service->insert();
+        $plateID = $plate_service->insert();
+        echo $plateID;
         break;
     case 'select':
         $plateObj = new Plate();

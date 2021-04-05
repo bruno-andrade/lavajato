@@ -88,14 +88,16 @@ $(window).on('load', function() {
 
 //FUNÇÕES 'CRUD' ASSINCRONAS
 // NOTE TO SELF: CRIAR 3 INSERTS DIFERENTES QUE RETORNAM O ID DOS DADOS INSERIDOS POR MEIO DO XHTTP.RESPONSETEXT
-function insert() {
+function dados() {
+    //PEGA TODOS OS SERVIÇOS SELECIONADOS E ARMAZENA NUM ARRAY
     let x = document.querySelectorAll('[name=serviceOption]:checked');
     let servico = "";
+    //JUNTA OS SERVIÇOS NUMA VARIÁVEL SÓ
     x.forEach(element => {
         servico += $(element).attr('value') + ",";
-        console.log(servico);
     });
     
+    //GUARDA TODOS OS DADOS PREENCHIDOS NO FORMULÁRIO DE NOVA OS
     let z               = document.querySelectorAll('[name=paymentOption]:checked'); 
 
     let plate           = document.getElementById('placa').value;
@@ -111,17 +113,8 @@ function insert() {
     
     //let arrayIds = [plate, name, vehicle, color, phone, service, price, paymentMethod];
     //console.log(arrayIds);
-    
-    url = "os_controller.php?opt=insert&plate="+plate+"&name="+name+"&vehicle="+vehicle+"&color="+color+"&phone="+phone+"&price="+price+"&paymentMethod="+paymentMethod+"&service="+service;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log('dado cadastrado');    
-        }                    
-    };                
-    xhttp.open("GET", url, true);
-    xhttp.send();
 }
+
 
 function select(params) {
     let xhttp = new XMLHttpRequest();
@@ -137,7 +130,7 @@ function select(params) {
 
 function update(page,id, param1, param2, param3) {
     let xhttp = new XMLHttpRequest();
-    url = page+"_controller.php?opt=update&id="+id+"&param1="+param1+"&param2="+param2+"param3="+param3;    
+    url = page+"_controller.php?opt=update&param1="+param1+"&param2="+param2+"param3="+param3;    
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             select(page);     
@@ -146,6 +139,18 @@ function update(page,id, param1, param2, param3) {
     xhttp.open("GET", url, true);
     xhttp.send();
 }
+
+function insert(page, param1, param2, x) {
+    let xhttp = new XMLHttpRequest();
+    url = page+"_controller.php?opt=insert&param1="+param1+"&param2="+param2;    
+    xhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+        }                            
+    };                
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
+
 
 function deletar(id) {
     let xhttp = new XMLHttpRequest();
@@ -159,6 +164,46 @@ function deletar(id) {
     xhttp.send();
 }
 
+
+
+function cadastroMultiplo() {
+
+    //PEGA TODOS OS SERVIÇOS SELECIONADOS E ARMAZENA NUM ARRAY
+    let x = document.querySelectorAll('[name=serviceOption]:checked');
+    let servico = "";
+    //JUNTA OS SERVIÇOS NUMA VARIÁVEL SÓ
+    x.forEach(element => {
+        servico += $(element).attr('value') + ",";
+    });
+    
+    //GUARDA TODOS OS DADOS PREENCHIDOS NO FORMULÁRIO DE NOVA OS
+    let z               = document.querySelectorAll('[name=paymentOption]:checked'); 
+
+    let plate           = document.getElementById('placa').value;
+    let name            = document.getElementById('nome').value;
+    let vehicle         = document.getElementById('veiculo').value;
+    let color           = document.getElementById('cor').value;
+    let telefone        = document.getElementById('telefone').value; 
+    let ddd             = document.getElementById('ddd').value; 
+    let price           = document.getElementById('valor').value;
+    let paymentMethod   = $(z[0]).attr('id');
+    service             = servico.slice(0, -1);
+    let phone           = `${ddd}${telefone}`;   
+    
+    let url1 = "owner_controller.php?opt=insert";
+    let url2 = "plate_controller.php?opt=insert";
+    let url3 = "os_controller.php?opt=insert";
+    let url3 = "nm_controller.php?opt=insert";
+
+    
+    $.get( url1, { param1: name, param2: phone } ).done(function (response1) {
+        $.get( url2, { param1: plate, param2: vehicle, param3: color } ).done(function (response2) {
+            $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: response1, param5: response2} );
+            $.get( url4, { param1: response1, param2: response2 } );
+        });
+    });
+    
+}
 
 
 //FUNÇÃO PRA OBTER HORA E DATA

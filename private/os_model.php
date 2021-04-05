@@ -4,6 +4,8 @@ class Os{
     private $service;
     private $price;
     private $paymentMethod;
+    private $ownerID;
+    private $plateID;
     private $id;
 
     public function __set($parametro, $valor){

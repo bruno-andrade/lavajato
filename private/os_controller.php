@@ -9,13 +9,21 @@
     isset($_GET['param1'])  ? $service      = $_GET['param1'] : null;
     isset($_GET['param2'])  ? $price        = $_GET['param2'] : null;
     isset($_GET['param3'])  ? $paymentMethod= $_GET['param3'] : null;
+    isset($_GET['param4'])  ? $ownerID      = $_GET['param4'] : null;
+    isset($_GET['param5'])  ? $plateID      = $_GET['param5'] : null;
 
 switch ($opt) {
     case 'insert':
         $os = new Os();        
-        isset($service)         ? $os->__set('service', $service)             :null;
-        isset($price)           ? $os->__set('price', $price)                 :null;
-        isset($paymentMethod)   ? $os->__set('paymentMethod', $paymentMethod) :null;
+        isset($service)        ? $os->__set('service', $service)             :null;
+        isset($price)          ? $os->__set('price', $price)                 :null;
+        isset($paymentMethod)  ? $os->__set('paymentMethod', $paymentMethod) :null;
+        isset($ownerID)        ? $os->__set('ownerID', $ownerID)             :null;
+        isset($plateID)        ? $os->__set('plateID', $plateID)             :null;
+
+        $array = [$service, $price, $paymentMethod, $ownerID, $plateID];
+        print_r($array);
+
         $conn = new Connection();
         $os_service = new OsService($os, $conn);
         $os_service->insert();

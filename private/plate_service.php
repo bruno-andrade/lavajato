@@ -14,12 +14,13 @@ class PlateService {
 
 
     public function insert(){ 
-        $query = "INSERT INTO plate (placa, veiculo, cor) VALUES (:placa,:veiculo,:cor)";
+        $query = "INSERT INTO placa (placa, veiculo, cor) VALUES (:placa,:veiculo,:cor)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':placa', $this->plate->__get('plate'));
         $stmt->bindValue(':veiculo', $this->plate->__get('vehicle'));
         $stmt->bindValue(':cor', $this->plate->__get('color'));
-        $stmt->execute();
+        $stmt->execute();  
+        return $this->conn->lastInsertId();
     }
     /*  FUNÇÃO DESABILITADA POR QUESTÕES DE SEGURANÇA DE DADOS
         public function delete(){ 

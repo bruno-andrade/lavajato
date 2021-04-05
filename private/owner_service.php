@@ -18,7 +18,8 @@ class OwnerService {
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':nome', $this->owner->__get('name'));
         $stmt->bindValue(':telefone', $this->owner->__get('phone'));
-        $stmt->execute();
+        $stmt->execute();  
+        return $this->conn->lastInsertId();
     }
     public function delete(){ 
         $query = "DELETE FROM `cliente` WHERE `id_cliente` = :id";

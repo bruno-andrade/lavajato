@@ -17,7 +17,8 @@ switch ($opt) {
         isset($phone)     ? $owner->__set('phone', $phone)     :null;
         $conn = new Connection();
         $owner_service = new OwnerService($owner, $conn);
-        $owner_service->insert();
+        $ownerID = $owner_service->insert();
+        echo $ownerID;
         break;
     case 'select':
         $owner = new Owner();

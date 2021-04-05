@@ -19,9 +19,10 @@ class OsService {
         $stmt->bindValue(':servico', $this->os->__get('service'));
         $stmt->bindValue(':valor', $this->os->__get('price'));
         $stmt->bindValue(':pagamento', $this->os->__get('paymentMethod'));
-        $stmt->bindValue(':cliente', 1);
-        $stmt->bindValue(':placa', 1);
+        $stmt->bindValue(':cliente', $this->os->__get('ownerID'));
+        $stmt->bindValue(':placa', $this->os->__get('plateID'));    
         $stmt->execute();
+        echo $query;
     }
     public function delete(){ 
         $query = "DELETE FROM `os` WHERE `id_os` = :id";
