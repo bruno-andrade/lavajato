@@ -44,6 +44,9 @@ switch ($opt) {
                     <div class='car-plate'><span id='plate".$value['id_os']."' class='car-plate-span'>".$value['placa']."</span></div>
                 </div>
                 <div class='pill-content'>
+                    <div id='idOs".$value['id_os']."' class='d-none'>".$value['id_os']."</div>
+                    <div id='idCliente".$value['id_os']."' class='d-none'>".$value['cliente_id_cliente']."</div>
+                    <div id='idPlaca".$value['id_os']."' class='d-none'>".$value['placa_id_placa']."</div>
                     <div id='phone".$value['id_os']."' class='d-none'>".$value['telefone']."</div>
                     <div id='price".$value['id_os']."' class='d-none'>".$value['valor']."</div>
                     <div id='paymentMethod".$value['id_os']."' class='d-none'>".$value['pagamento']."</div>
@@ -85,17 +88,12 @@ switch ($opt) {
         isset($service)         ? $os->__set('service', $service)             :null;
         isset($price)           ? $os->__set('price', $price)                 :null;
         isset($paymentMethod)   ? $os->__set('paymentMethod', $paymentMethod) :null;
+        isset($ownerID)         ? $os->__set('ownerID', $ownerID)             :null;
+        isset($plateID)         ? $os->__set('plateID', $plateID)             :null;
         isset($id)              ? $os->__set('id', $id)                       :null;
         $conn = new Connection();
         $os_service = new OsService($os, $conn);
         $retorno = $os_service->update();
-
-
-
-        
-
-
-
         break;
     default:
         # code...

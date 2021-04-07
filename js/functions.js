@@ -31,7 +31,15 @@ $(document).ready(function(){
             limparCampos();
             osModal.hide();
         }); 
+        
+        $('.salvar').click( function(){
+            novaOS();
+            limparCampos(arrayServico, pagamento);
+            osModal.hide();
+        }); 
     });
+
+    
 
     //EDIÇÃO DA OS
     $(document).on('click','.layer', function(){
@@ -45,6 +53,9 @@ $(document).ready(function(){
         osModal.show();                         
 
         //GUARDA OS VALORES QUE VÃO SER EDITADOS
+        let idOs      = document.getElementById('idOs'+elmId).innerHTML; 
+        let idCliente = document.getElementById('idCliente'+elmId).innerHTML; 
+        let idPlaca   = document.getElementById('idPlaca'+elmId).innerHTML; 
         let placa     = document.getElementById('plate'+elmId).innerHTML; 
         let nome      = document.getElementById('name'+elmId).innerHTML; 
         let veiculo   = document.getElementById('vehicle'+elmId).innerHTML; 
@@ -82,6 +93,7 @@ $(document).ready(function(){
         arrayServico.forEach(element => {
             document.getElementById(element).checked= true; 
         });
+        //BOTÃO DE FECHAR MODAL
         $('.close').click( function(){
             limparCampos(arrayServico, pagamento);
             osModal.hide();
@@ -103,6 +115,7 @@ function limparCampos(arrayServico, pagamento) {
     if (pagamento) {
         document.getElementById(pagamento).checked  = false;
     }
+    
     document.getElementById('placa').value      = "";
     document.getElementById('nome').value       = "";
     document.getElementById('veiculo').value    = "";
@@ -113,84 +126,18 @@ function limparCampos(arrayServico, pagamento) {
 }
 
 //FUNÇÕES 'CRUD' ASSINCRONAS
-// NOTE TO SELF: CRIAR 3 INSERTS DIFERENTES QUE RETORNAM O ID DOS DADOS INSERIDOS POR MEIO DO XHTTP.RESPONSETEXT
-function dados() {
-    //PEGA TODOS OS SERVIÇOS SELECIONADOS E ARMAZENA NUM ARRAY
-    let x = document.querySelectorAll('[name=serviceOption]:checked');
-    let servico = "";
-    //JUNTA OS SERVIÇOS NUMA VARIÁVEL SÓ
-    x.forEach(element => {
-        servico += $(element).attr('value') + ",";
+
+function select(page) {
+    url = page+"_controller.php?opt=select";
+    $.get( url ).done(function (response) {
+        document.getElementById("main").innerHTML = response;
     });
-    
-    //GUARDA TODOS OS DADOS PREENCHIDOS NO FORMULÁRIO DE NOVA OS
-    let z               = document.querySelectorAll('[name=paymentOption]:checked'); 
-
-    let plate           = document.getElementById('placa').value;
-    let name            = document.getElementById('nome').value;
-    let vehicle         = document.getElementById('veiculo').value;
-    let color           = document.getElementById('cor').value;
-    let telefone        = document.getElementById('telefone').value; 
-    let ddd             = document.getElementById('ddd').value; 
-    let price           = document.getElementById('valor').value;
-    let paymentMethod   = $(z[0]).attr('id');
-    service             = servico.slice(0, -1);
-    let phone           = `${ddd}${telefone}`;         
-    
-    //let arrayIds = [plate, name, vehicle, color, phone, service, price, paymentMethod];
-    //console.log(arrayIds);
 }
 
-
-function select(params) {
-    let xhttp = new XMLHttpRequest();
-    url = params+"_controller.php?opt=select";
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("main").innerHTML = xhttp.responseText;       
-        }                    
-    };                
-    xhttp.open("GET", url, true);
-    xhttp.send();
+function deletar(id, page) {
+    url = page+"_controller.php?opt=delete&id="+id;
+    $.get( url );
 }
-
-function update(page,id, param1, param2, param3) {
-    let xhttp = new XMLHttpRequest();
-    url = page+"_controller.php?opt=update&param1="+param1+"&param2="+param2+"param3="+param3;    
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            select(page);     
-        }                    
-    };                
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}
-
-function insert(page, param1, param2, x) {
-    let xhttp = new XMLHttpRequest();
-    url = page+"_controller.php?opt=insert&param1="+param1+"&param2="+param2;    
-    xhttp.onreadystatechange = function() {        
-        if (this.readyState == 4 && this.status == 200) {
-        }                            
-    };                
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}
-
-
-function deletar(id) {
-    let xhttp = new XMLHttpRequest();
-    url = "os_controller.php?opt=delete&id="+id;
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            select('os');         
-        }                    
-    };                
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}
-
-
 
 function novaOS() {
 
@@ -203,6 +150,54 @@ function novaOS() {
     });
     
     //GUARDA TODOS OS DADOS PREENCHIDOS NO FORMULÁRIO DE NOVA OS
+    let payment         = document.querySelectorAll('[name=paymentOption]:checked'); 
+    let idPlaca         = document.getElementById('idPlaca').value;
+    let idCliente       = document.getElementById('idCliente').value;
+    let price           = document.getElementById('valor').value;
+    let paymentMethod   = $(payment[0]).attr('id');
+    let service         = servico.slice(0, -1);
+
+    //URL NO SERVIDOR EM QUE OS DADOS SERÃO ENVIADOS/RECEBIDOS
+    let url = "os_controller.php?opt=insert";
+    //JQUERY AJAX METODO GET
+    $.get( url, { param1: service, param2: price, param3: paymentMethod, param4: idCliente, param5: idPlaca} );
+
+    //let plate           = document.getElementById('placa').value;
+    //let name            = document.getElementById('nome').value;
+    //let vehicle         = document.getElementById('veiculo').value;
+    //let color           = document.getElementById('cor').value;
+    //let telefone        = document.getElementById('telefone').value; 
+    //let ddd             = document.getElementById('ddd').value; 
+    //let phone           = `${ddd}${telefone}`;   
+    
+    //let url1 = "owner_controller.php?opt=insert"; 
+    //let url2 = "plate_controller.php?opt=insert";
+    //let url4 = "nm_controller.php?opt=insert";
+
+    
+    /*$.get( url1, { param1: name, param2: phone } ).done(function (response1) {
+        $.get( url2, { param1: plate, param2: vehicle, param3: color } ).done(function (response2) {
+            $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: response1, param5: response2} );
+            //$.get( url4, { param1: response1, param2: response2 } );
+        });
+    });   */ 
+}
+
+function update(idOs, idCliente, idPlaca) {
+
+    console.log(idOs);
+    console.log(idCliente);
+    console.log(idPlaca);
+
+    //PEGA TODOS OS SERVIÇOS SELECIONADOS E ARMAZENA NUM ARRAY
+    let x = document.querySelectorAll('[name=serviceOption]:checked');
+    let servico = "";
+    //JUNTA OS SERVIÇOS NUMA VARIÁVEL SÓ
+    x.forEach(element => {
+        servico += $(element).attr('value') + ",";
+    });
+    
+    //GUARDA TODOS OS DADOS PREENCHIDOS NO FORMULÁRIO DE NOVA OS EM VARIÁVEIS
     let z               = document.querySelectorAll('[name=paymentOption]:checked'); 
 
     let plate           = document.getElementById('placa').value;
@@ -216,19 +211,31 @@ function novaOS() {
     service             = servico.slice(0, -1);
     let phone           = `${ddd}${telefone}`;   
     
-    let url1 = "owner_controller.php?opt=insert";
-    let url2 = "plate_controller.php?opt=insert";
-    let url3 = "os_controller.php?opt=insert";
-    let url4 = "nm_controller.php?opt=insert";
+    let url1 = "owner_controller.php?opt=update"; 
+    let url2 = "plate_controller.php?opt=update";
+    let url3 = "os_controller.php?opt=update";
+    let url4 = "nm_controller.php?opt=update";
 
-    
-    $.get( url1, { param1: name, param2: phone } ).done(function (response1) {
-        $.get( url2, { param1: plate, param2: vehicle, param3: color } ).done(function (response2) {
-            $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: response1, param5: response2} );
-            //$.get( url4, { param1: response1, param2: response2 } );
+    if (idCliente && idPlaca) {
+        console.log('DEBUG');
+        $.get( url3, {id:idOs, param1: service, param2: price, param3: paymentMethod, param4: idCliente, param5: idPlaca} );
+    }else if(idCliente){
+        $.get( url2, {id:idOs, param1: plate, param2: vehicle, param3: color } ).done(function (response2) {
+            $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: idCliente, param5: response2} );
+            //$.get( url4, { param1: idCliente, param2: response2 } );
+        });    
+    }else if(idPlaca){
+        $.get( url1, { param1: name, param2: phone } ).done(function (response1) {
+            $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: response1, param5: idPlaca} );
         });
-    });
-    
+    }else{
+        $.get( url1, { param1: name, param2: phone } ).done(function (response1) {
+            $.get( url2, { param1: plate, param2: vehicle, param3: color } ).done(function (response2) {
+                $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: response1, param5: response2} );
+                //$.get( url4, { param1: response1, param2: response2 } );
+            });
+        });
+    }    
 }
 
 
@@ -251,3 +258,14 @@ function datetime() {
     document.getElementById('date').innerHTML = date;
     document.getElementById('time').innerHTML = time;
 }
+
+//POVOAR A LISTA DE PLACAS
+$('#placa').keyup(function () {
+    let search = document.getElementById('placa').value;
+    url = "plate_controller.php?opt=select";
+    $.get( url, {param1: search} ).done(function (response) {
+        document.getElementById("placas").innerHTML = response;
+        //document.getElementById("placas").value = response;
+    });
+})
+    

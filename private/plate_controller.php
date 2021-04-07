@@ -26,29 +26,41 @@ switch ($opt) {
     case 'select':
         $plateObj = new Plate();
 		$conn = new Connection();
-        $plate_service = new PlateService($plateObj, $conn);
-        $retorno = $plate_service->select();   
+        if ($plate) {
+            $plateObj->__set('plate', $plate);
+            $plate_service = new PlateService($plateObj, $conn);
+            $retorno = $plate_service->search();
+            $print = "";
+            foreach ($retorno as $value) {
+                $print .= "<option value='".$value['placa']."'>"; 
+                //$print .= $value['placa']; 
+            }
+            echo $print;
+        }else{
+            $plate_service = new PlateService($plateObj, $conn);
+            $retorno = $plate_service->select();   
 
-        $print = "<section id='car-plates'>
-                    <div class='container-fluid'>";
-
-        foreach ($retorno as $value) {
-
-            $print .= "
-            <div class='pill plates'>
-                <div class='pill-header'>
-                    <div class='car-plate'><span class='car-plate-span'>".$value['veiculo']." - ".$value['cor']."</span></div>
-                </div>
-                <div class='pill-content'>
-                    <h2>".$value['placa']."</h2>
-                    <p>".$value['nome']."</p>                              
-                </div>
-            </div>";            
+            $print = "<section id='car-plates'>
+                        <div class='container-fluid'>";
+    
+            foreach ($retorno as $value) {
+    
+                $print .= "
+                <div class='pill plates'>
+                    <div class='pill-header'>
+                        <div class='car-plate'><span class='car-plate-span'>".$value['veiculo']." - ".$value['cor']."</span></div>
+                    </div>
+                    <div class='pill-content'>
+                        <h2>".$value['placa']."</h2>
+                        <p>".$value['nome']."</p>                              
+                    </div>
+                </div>";            
+            }
+            $print .= "</div></section>";
+            echo $print;
         }
 
-        $print .= "</div></section>";
-
-        echo $print;
+        
 
         break;
     case 'delete':

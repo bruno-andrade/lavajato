@@ -39,6 +39,18 @@ class PlateService {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);        
     }
+    public function search(){
+        $query = "SELECT * FROM placa 		
+        INNER JOIN cliente_has_placa ON id_placa = placa_id_placa
+        INNER JOIN cliente ON cliente_id_cliente = id_cliente
+        WHERE placa LIKE :placa 
+        ORDER BY placa ASC";
+        $placaSearch = "%".$this->plate->__get('plate')."%";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindValue(':placa', $placaSearch);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);        
+    }
     public function update(){
 		if ($this->plate->__get('plate')) {
 			$query  =  "UPDATE `placa` SET `placa` = :placa WHERE `id_placa` = :id";

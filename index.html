@@ -53,9 +53,21 @@
                             <label for="time" id="time" class="time"></label>
                         </div>
                         <div class="os-form">
-                                <div class="os-form-block" id="plate">
+                            <div class="os-form-block" id="plate">
+                                <label for="idCliente" id="idCliente" class="d-none os-form-label">id do cliente</label>
+                                <label for="idPlaca" id="idPlaca" class="d-none os-form-label">id do placa</label>
+                            </div>
+                                <!--div class="os-form-block" id="plate">
                                     <label for="placa" class="os-form-label">Placa</label>
                                     <input class="os-form-control" id="placa" type="text" placeholder="Ex: MVK1017" aria-label="default input example" maxlength="7" minlength="7">
+                                </div-->
+                                <div class="os-form-block" id="testep">
+                                    <div class="os-form-block" id="plate">
+                                        <label class="os-form-label" for="placa">Placa</label>
+                                        <input class="os-form-control" list="placas" maxlength="7" name="placa" id="placa">
+                                        <datalist id="placas">
+                                        </datalist>
+                                    </div>                                    
                                 </div>
                                 <div class="os-form-block" id="car">
                                     <label for="car" class="os-form-label">Carro</label>
@@ -155,7 +167,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn cancelar close" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" onclick="novaOS()" class="btn salvar close">Salvar</button>
+                        <button type="button" onclick="" class="btn salvar">Salvar</button>
                     </div>
                 </div>
             </div>

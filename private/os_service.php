@@ -31,7 +31,7 @@ class OsService {
         $stmt->execute();
     }
     public function select(){
-        $query = 'SELECT o.id_os, p.placa, c.nome, c.telefone, p.veiculo, p.cor, o.servico, o.valor, o.pagamento  
+        $query = 'SELECT o.id_os, p.placa, c.nome, c.telefone, p.veiculo, p.cor, o.servico, o.valor, o.pagamento, o.cliente_id_cliente, o.placa_id_placa  
         FROM os AS o, cliente AS c, placa AS p
         WHERE o.cliente_id_cliente = c.id_cliente AND
         o.placa_id_placa = p.id_placa
@@ -41,30 +41,28 @@ class OsService {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);        
     }
     public function update(){
-		if ($this->os->__get('service')) {
-			$query  =  "UPDATE `os` SET `servico` = :servico WHERE `id_os` = :id";
+        function updateResponsivo($coluna, $variavel){
+            $query  =  "UPDATE `os` SET $coluna = :valor WHERE `id_os` = :id";
 			$stmt  = $this->conn->prepare($query);
-			$stmt->bindValue(':servico', $this->os->__get('service'));
+			$stmt->bindValue(':valor', $this->os->__get($variavel));
 			$stmt->bindValue(':id', $this->os->__get('id'));
-			$stmt->execute(); 
-			//echo "debug service";
+			$stmt->execute();  
+        }
+		if ($this->os->__get('service')) {
+            updateResponsivo('servico', 'service');
 		}
 		if ($this->os->__get('price')) {
-			$query  =  "UPDATE `os` SET `valor` = :valor WHERE `id_os` = :id";
-			$stmt  = $this->conn->prepare($query);
-			$stmt->bindValue(':valor', $this->os->__get('price'));
-			$stmt->bindValue(':id', $this->os->__get('id'));
-			$stmt->execute();   
-			//echo "debug price";
+			updateResponsivo('valor', 'price');
 		}
 		if ($this->os->__get('paymentMethod')) {
-			$query  =  "UPDATE `os` SET `pagamento` = :pagamento WHERE `id_os` = :id";
-			$stmt  = $this->conn->prepare($query);
-			$stmt->bindValue(':pagamento', $this->os->__get('paymentMethod'));
-			$stmt->bindValue(':id', $this->os->__get('id'));
-			$stmt->execute();   
-			//echo "debug payment";
+            updateResponsivo('pagamento', 'paymentMethod');
+		}
+        if ($this->os->__get('ownerID')) {
+            updateResponsivo('cliente_id_cliente', 'ownerID');
 		}  
+        if ($this->os->__get('plateID')) {
+            updateResponsivo('placa_id_placa', 'plateID');
+		}    
     }
 }
 
