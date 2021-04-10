@@ -30,12 +30,7 @@ switch ($opt) {
             $plateObj->__set('plate', $plate);
             $plate_service = new PlateService($plateObj, $conn);
             $retorno = $plate_service->search();
-            $print = "";
-            foreach ($retorno as $value) {
-                $print .= "<option value='".$value['placa']."'>"; 
-                //$print .= $value['placa']; 
-            }
-            echo $print;
+            echo json_encode($retorno, JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
         }else{
             $plate_service = new PlateService($plateObj, $conn);
             $retorno = $plate_service->select();   

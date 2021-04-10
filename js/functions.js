@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
     //INICIA A LISTA DE OS's
     select('os');
 
@@ -260,12 +261,34 @@ function datetime() {
 }
 
 //POVOAR A LISTA DE PLACAS
-$('#placa').keyup(function () {
-    let search = document.getElementById('placa').value;
-    url = "plate_controller.php?opt=select";
-    $.get( url, {param1: search} ).done(function (response) {
-        document.getElementById("placas").innerHTML = response;
-        //document.getElementById("placas").value = response;
+$('#placa').focus(function () {
+    $('#placa').keyup(function () {
+        let search = document.getElementById('placa').value;
+        if (search) {
+            url = "plate_controller.php?opt=select";
+            $.get( url, {param1: search} ).done(function (response) {
+                response = jQuery.parseJSON(response);
+                document.getElementById("placas").innerHTML = "";        
+                Object.keys(response).forEach(function(key) {
+                    document.getElementById("placas").innerHTML += "<option id='option' value='"+response[key].placa+"'>";
+                });
+                
+                $('#placa').blur(function () {              
+                    document.getElementById('idPlaca')  .innerHTML  = response[0].id_placa;
+                    document.getElementById('veiculo')  .value      = response[0].veiculo;
+                    document.getElementById('cor')      .value      = response[0].cor;
+                    document.getElementById('idCliente').innerHTML  = response[0].id_cliente;
+                    document.getElementById('nome')     .value      = response[0].nome;
+                    document.getElementById('telefone') .value      = response[0].telefone;
+                });
+            });
+        }
+        
     });
 })
-    
+
+
+
+$('#placas').focus(function () {   
+    console.log('clicado')
+})
