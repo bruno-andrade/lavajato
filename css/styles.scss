@@ -32,10 +32,11 @@ $fontSource: 'Source Sans Pro', sans-serif;
     $pill-bg: hsl(0, 0%, 11%);
     $fontColor: #d8d8d8;
 */
-
+html{
+    background-color: $offwhite;
+}
 body{
     font-family: $fontSource;
-    background-color: $offwhite;
     height: 100vh;
     h1{
         font-family: $fontInter;
@@ -45,6 +46,18 @@ body{
     }
     
     nav{
+        .selected{
+            width: 20%;
+            height: inherit;
+            position: absolute;
+            background-color: $blue !important;
+            transition: .4s ease-in-out;
+            stroke: $offwhite !important;
+            z-index: -1;
+            left: 0;
+            border-radius: 1.4em;
+            @include shadow1;
+        }
         z-index: 1;
         background-color: rgba(255, 255, 255, .15);
         backdrop-filter: blur(5px);
@@ -54,25 +67,12 @@ body{
         &.navbar{
             padding: 0;
         }
-        /*.container-fluid::before{
-            content: '';
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-            filter: blur(10px);
-            background: inherit;
-        }*/
         .container-fluid{
             position: relative;
             z-index: 1;
             padding: 0;
             background: inherit;
         }
-        
         a{
             width: 20%;
             height: auto;
@@ -84,13 +84,11 @@ body{
             &.nav-link{
                 padding: 1em;
                 transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
-                &:active, &:focus, &:hover{
-                    background-color: $blue;
-                    transition: .2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
-                    stroke: $offwhite;
-                }
             }
-            
+            &.active{
+                transition: .4s ease-in;
+                stroke: white !important;
+            }
             svg{               
                 width: 30px;
                 height: 30px;                
@@ -139,12 +137,11 @@ body{
         z-index: 0;
         position: absolute;
         width: 100%;
-        height: 100vh;
         overflow: scroll;
+        padding-bottom: 4em;
     }
-    #list, #clients, #dashboard, #car-plates{
-        margin-top: 5em;
-        margin-bottom: 5em;
+    #list, #clients, #car-plates{
+        display: none;
     }
     #list, #car-plates{
         .layer{
@@ -213,40 +210,8 @@ body{
                     float: left;
                 }
                 .actions{
-                    padding: 0;
-                    width: 6.725em;
-                    height: 3em;
-                    margin-top: 1em;
+                    margin-top: 1.5em;
                     float: right;
-                    border-radius: .7em;
-                    position: relative;
-                    bottom: -5px;
-                    right: 0;
-                    a{
-                        border-radius: .7em;
-                        padding: .75em .8em;
-                        margin: 0;
-                        display: block;
-                        float: right;
-                        width: 3.1em;
-                        height: auto;
-                        background-color: rgba(22, 35, 80, 0.075);
-                        backdrop-filter: blur(15px);
-                        
-                        @include shadow1;
-                        svg{
-                            width: 24px;
-                            height: 24px;                
-                            stroke-width: 2;
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            fill: none;
-                            stroke: $blue;
-                        }
-                        &.m{
-                            margin-left: .5em;
-                        }
-                    }
                 }
                 .tab{
                     width: .4em;
@@ -261,6 +226,7 @@ body{
                     margin: 0;
                     line-height: 1.7;
                     font-size: 1.3em;
+                    width: 70%;
                 }
                 p{
                     font-family: $fontSource;
@@ -414,7 +380,7 @@ body{
         .articles{
             .card-body{
                 padding: 0;
-            }            
+            }          
             .badge {
                 font-size: 0.7em;
                 padding: 5px 10px;
@@ -425,18 +391,43 @@ body{
                 padding: .8em;
                 align-items: center;
                 display: flex;
+                .text{
+                    width: 50%;
+                    padding-right: .5em;
+                }
                 .image {
-                    min-width: 50px;
-                    max-width: 50px;
-                    height: 50px;
-                    margin-right: 15px;
+                    margin-right: .5em;
+                    max-width: 15% !important;
+                    width: 3.25em;
+                    height: 3.25em;
+                    border-radius: 50%;
+                    background-color: rgba(38, 59, 136, 0.2);
+                    p{
+                        top: 50%;
+                        left: 50%;
+                        position: relative;
+                        width: auto;
+                        text-align: center;
+                        transform: translate(-50%, -50%);
+                        padding: 0;
+                        margin: 0;
+                        color: $blue;
+                        font-weight: 800;
+                        text-transform: uppercase;
+                        font-size: 1.1em;
+                        font-family: $fontInter;                        
+                    }
                 }
                 h3 {
                     color: $blue;
-                    font-weight: 300;
+                    font-weight: 600;
                     margin-bottom: 0;
-                    font-family: $fontInter;
-                    font-size: 1.3em;
+                    font-family: $fontSource;
+                    font-size: 1.2em;
+                }
+                .actions{
+                    border-radius: .7em;
+                    margin: 0 0 0 auto;
                 }
             }
             .item:nth-of-type(even) {
@@ -475,6 +466,36 @@ body{
                         transition: none;
                     }
                 }
+            }
+        }
+    }
+    .actions{
+        padding: 0;
+        width: 6.725em;
+        border-radius: .7em;
+        a{
+            border-radius: .7em;
+            padding: .75em .8em;
+            margin: 0;
+            display: block;
+            float: right;
+            width: 3.1em;
+            height: auto;
+            background-color: rgba(22, 35, 80, 0.075);
+            backdrop-filter: blur(15px);
+            
+            @include shadow1;
+            svg{
+                width: 24px;
+                height: 24px;                
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                fill: none;
+                stroke: $blue;
+            }
+            &.m{
+                margin-left: .5em;
             }
         }
     }

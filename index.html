@@ -30,13 +30,17 @@
 </head>
 <body>
     
-    <section id="header">
+    <!--section id="header">
         <div class="container-fluid">
             <h1>Olá Bruno, bom dia!</h1>
         </div>
-    </section>
+    </section-->
     
-    <section id="main"></section>
+    <section id="main">
+        <section id='list'></section>
+        <section id='clients'></section>
+        <section id='car-plates'></section>
+    </section>
 
 <!-- Modal -->
     <div id="os-modal">
@@ -57,10 +61,6 @@
                                 <label for="idCliente" id="idCliente" class="d-none os-form-label">id do cliente</label>
                                 <label for="idPlaca" id="idPlaca" class="d-none os-form-label">id do placa</label>
                             </div>
-                                <!--div class="os-form-block" id="plate">
-                                    <label for="placa" class="os-form-label">Placa</label>
-                                    <input class="os-form-control" id="placa" type="text" placeholder="Ex: MVK1017" aria-label="default input example" maxlength="7" minlength="7">
-                                </div-->
                                 <div class="os-form-block" id="testep">
                                     <div class="os-form-block" id="plate">
                                         <label class="os-form-label" for="placa">Placa</label>
@@ -172,7 +172,9 @@
                 </div>
             </div>
         </div>
-    </div>           
+    </div>    
+<!-- Alert --> 
+        
 <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="center">
@@ -185,7 +187,8 @@
 <!-- Nav Bar -->
     <nav class="navbar navbar-expand-sm fixed-bottom">
         <div class="container-fluid">
-            <a id="menu-dashboard" class="nav-link" href="#">
+            <div class="selected"></div>
+            <a id="menu-dashboard" class="nav-link active" href="#">
                 <svg class="feather">
                     <use xlink:href="images/feather/feather-sprite.svg#bar-chart-2"/>
                 </svg>

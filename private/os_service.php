@@ -35,7 +35,7 @@ class OsService {
         FROM os AS o, cliente AS c, placa AS p
         WHERE o.cliente_id_cliente = c.id_cliente AND
         o.placa_id_placa = p.id_placa
-        ORDER BY id_os';
+        ORDER BY id_os DESC';
         $stmt  = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);        

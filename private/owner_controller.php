@@ -26,7 +26,6 @@ switch ($opt) {
         $owner_service = new OwnerService($owner, $conn);
         $retorno = $owner_service->select();
         $print = "
-        <section id='clients'>
             <div class='container-fluid'>
                 <div class='row'>
                     <div class='col'>
@@ -34,18 +33,37 @@ switch ($opt) {
                             <div class='card-body'>";
 
         foreach ($retorno as $value) {
+            //SCRIPT PARA PEGAR AS INICIAIS DO NOME
+            $nome = str_word_count($value['nome'],1);
+            $index = count($nome) - 1;            
+            $inicial = substr($nome[0],0 , (strlen($nome[0])-1)*(-1));
+            if ($index > 0) {
+                $inicial .= substr($nome[$index],0 , (strlen($nome[$index])-1)*(-1));
+            }          
 
             $print .= "<div id='".$value['id_cliente']."' class='item'>
-                <div class='image'>
-                    <img src='images/favicon-144x144.png' alt='imagem de perfil' class='img-fluid rounded-circle'>
+                <div id='image' class='image'>
+                    <p>".$inicial."</p>
                 </div>
                 <div class='text'>
                     <h3>".$value['nome']."</h3>
                 </div>
+                <div class='actions'>
+                    <a class='m' href='#'>
+                        <svg class='feather'>
+                            <use xlink:href='images/feather/feather-sprite.svg#message-circle'/>
+                        </svg>
+                    </a>
+                    <a href='#'>
+                        <svg class='feather'>
+                            <use xlink:href='images/feather/feather-sprite.svg#phone'/>
+                        </svg>
+                    </a>
+                </div>
             </div>";            
         }
 
-        $print .= "</div></div></div></div></div></section>";
+        $print .= "</div></div></div></div></div>";
 
         echo $print;
         break;

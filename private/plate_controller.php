@@ -26,7 +26,7 @@ switch ($opt) {
     case 'select':
         $plateObj = new Plate();
 		$conn = new Connection();
-        if ($plate) {
+        if (isset($plate)) {
             $plateObj->__set('plate', $plate);
             $plate_service = new PlateService($plateObj, $conn);
             $retorno = $plate_service->search();
@@ -35,8 +35,7 @@ switch ($opt) {
             $plate_service = new PlateService($plateObj, $conn);
             $retorno = $plate_service->select();   
 
-            $print = "<section id='car-plates'>
-                        <div class='container-fluid'>";
+            $print = "<div class='container-fluid'>";
     
             foreach ($retorno as $value) {
     
@@ -51,7 +50,7 @@ switch ($opt) {
                     </div>
                 </div>";            
             }
-            $print .= "</div></section>";
+            $print .= "</div>";
             echo $print;
         }
 

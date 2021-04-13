@@ -33,12 +33,11 @@ switch ($opt) {
 		$conn = new Connection();
         $os_service = new OsService($os, $conn);
         $retorno = $os_service->select();
-        $print ="<section id='list'>
-                    <div class='container-fluid'>";
+        $print ="<div class='container-fluid'>";
 
-        foreach (array_reverse($retorno) as $value) {
+        foreach ($retorno as $value) {
             $print .= "    
-            <span id='".$value['id_os']."' class='layer'>                   
+            <div onclick='editarOS(".$value['id_os'].")' class='layer'>                   
             <div class='pill lists'>            
                 <div class='pill-header'>
                     <div class='car-plate'><span id='plate".$value['id_os']."' class='car-plate-span'>".$value['placa']."</span></div>
@@ -68,10 +67,9 @@ switch ($opt) {
                         </a>
                     </div>
                 </div>
-            </div></span>";
+            </div></div>";
         }
-        $print .= "</div>
-        </section>";
+        $print .= "</div>";
         echo $print;
 
 

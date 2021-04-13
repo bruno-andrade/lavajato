@@ -22,7 +22,7 @@ class PlateService {
         $stmt->execute();  
         return $this->conn->lastInsertId();
     }
-    /*  FUNÇÃO DESABILITADA POR QUESTÕES DE SEGURANÇA DE DADOS
+    /*  FUNÇÃO DESABILITADA 
         public function delete(){ 
             $query = "DELETE FROM `placa` WHERE `id_placa` = :id";
             $stmt = $this->conn->prepare($query);
