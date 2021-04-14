@@ -12,6 +12,14 @@ class OsService {
         $this->conn = $conn->conn();
     }
 
+    public function relationshipInsert(){
+        $query = "INSERT INTO cliente_has_placa (cliente_id_cliente, placa_id_placa) VALUES (:cliente, :placa)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':cliente', $this->os->__get('ownerID'));
+        $stmt->bindValue(':placa', $this->os->__get('plateID'));    
+        $stmt->execute();
+        echo $query;
+    }
 
     public function insert(){ 
         $query = "INSERT INTO os (servico, valor, pagamento, cliente_id_cliente, placa_id_placa) VALUES (:servico,:valor,:pagamento,:cliente, :placa)";

@@ -7,10 +7,6 @@ $(document).ready(() => {
     //NAV HEIGHT
     $('.selected').css('height', $('nav').height());
 
-    $(document).on('click', 'option', () =>{
-        console.log('teste');
-    });
-
     // FUNÇÕES DO MENU
     $("#menu-clients").click(() => {
         document.getElementById('clients').style.display    = 'inherit';       
@@ -45,9 +41,9 @@ $(document).ready(() => {
 
     // CRIA O MODAL DE NOVA OS    
     $(document).on('click','#osModalButton', () => {
-        let osModal = new bootstrap.Modal(document.getElementById('osModal'));
+        let novaOS = new bootstrap.Modal(document.getElementById('osModal'));
         datetime();
-        osModal.show();
+        novaOS.show();
         $('.close').click( () => {
             $('input[name="serviceOption"]').each( function () {
                 this.checked = false;
@@ -56,13 +52,13 @@ $(document).ready(() => {
                 this.checked = false;
             });
             limparCampos();
-            osModal.hide();
+            novaOS.hide();
         }); 
         
         $('.salvar').click( () => {
             novaOS();
             limparCampos();
-            osModal.hide();
+            novaOS.hide();
         }); 
     });          
 });
@@ -77,8 +73,8 @@ function editarOS(params) {
     var elmId = params;
 
     //CRIA E INICIA O MODAL
-    let osModal = new bootstrap.Modal(document.getElementById('osModal'));
-    osModal.show();                         
+    let editOS = new bootstrap.Modal(document.getElementById('osModal'));
+    editOS.show();                         
 
     //GUARDA OS VALORES QUE VÃO SER EDITADOS
     let idOs      = document.getElementById('idOs'+elmId).innerHTML; 
@@ -124,13 +120,13 @@ function editarOS(params) {
     //BOTÃO DE FECHAR MODAL
     $('.close').click( () => {
         limparCampos();
-        osModal.hide();
+        editOS.hide();
     }); 
     //BOTÃO DE SALVAR OS EDITADA
     $('.salvar').click( () => {
         update(idOs, idCliente, idPlaca);
         limparCampos();
-        osModal.hide();
+        editOS.hide();
     });
 }
 
@@ -180,7 +176,7 @@ function novaOS() {
     let servico = "";
     //JUNTA OS SERVIÇOS NUMA VARIÁVEL SÓ
     x.forEach(element => {
-        servico += $(element).attr('value') + ",";
+        servico += $(element).attr('id') + ",";
     });
     console.log(servico);
     
@@ -206,8 +202,7 @@ function novaOS() {
     let url1 = "owner_controller.php?opt=insert"; 
     let url2 = "plate_controller.php?opt=insert";
     let url3 = "os_controller.php?opt=insert";
-    let url4 = "nm_controller.php?opt=insert";
-    console.log(service, price, paymentMethod, idCliente, idPlaca);
+
     //JQUERY AJAX METODO GET
     if (idCliente && idPlaca) {
         $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: idCliente, param5: idPlaca} ).done(() => {
@@ -230,6 +225,8 @@ function novaOS() {
     }else{
         $.get( url1, { param1: name, param2: phone } ).done((response1) => {
             $.get( url2, { param1: plate, param2: vehicle, param3: color } ).done((response2) => {
+                
+                console.log(service, price, paymentMethod, response1, response2);
                 $.get( url3, { param1: service, param2: price, param3: paymentMethod, param4: response1, param5: response2} ).done(() => {
                     select('os');
                 });

@@ -21,11 +21,11 @@ switch ($opt) {
         isset($ownerID)        ? $os->__set('ownerID', $ownerID)             :null;
         isset($plateID)        ? $os->__set('plateID', $plateID)             :null;
 
-        $array = [$service, $price, $paymentMethod, $ownerID, $plateID];
-        print_r($array);
-
+        //$array = [$service, $price, $paymentMethod, $ownerID, $plateID];
+        //print_r($array);
         $conn = new Connection();
         $os_service = new OsService($os, $conn);
+        $os_service->relationshipInsert();
         $os_service->insert();
         break;
     case 'select':
